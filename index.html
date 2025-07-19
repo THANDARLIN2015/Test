@@ -1,1 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKVPN VIP Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a00e0;
+            --secondary: #8e2de2;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #fdcb6e;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .language-options {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: 100;
+            display: none;
+            min-width: 150px;
+        }
+        
+        .language-options.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .language-option:hover {
+            background: #f1f3f5;
+        }
+        
+        .language-flag {
+            width: 20px;
+            height: auto;
+        }
+        
+        /* Floating Social Buttons */
+        .floating-social {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .telegram-btn {
+            background: #0088cc;
+        }
+        
+        .facebook-btn {
+            background: #3b5998;
+        }
+        
+        .messenger-btn {
+            background: #006AFF;
+        }
+        
+        .download-btn-floating {
+            background: var(--success);
+        }
+        
+        .floating-tooltip {
+            position: absolute;
+            right: 80px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: var(--dark);
+            font-size: 18px;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .floating-btn:hover .floating-tooltip {
+            opacity: 1;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Digital Clock */
+        .digital-clock {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 300px;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .time {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            font-size: 18px;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        /* Download APK */
+        .download-apk {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 600px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .download-apk h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .download-apk p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Server Monitor */
+        .server-monitor {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 50px auto;
+            max-width: 1100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .monitor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .monitor-title {
+            color: var(--primary);
+            font-size: 32px;
+        }
+        
+        .total-users {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .monitor-subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .server-time {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        .server-time i {
+            color: var(--primary);
+        }
+        
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .server-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .server-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .server-flag {
+            width: 50px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .server-info {
+            flex: 1;
+        }
+        
+        .server-name {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .status-indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+        
+        .status-online {
+            background: var(--success);
+        }
+        
+        .status-offline {
+            background: var(--danger);
+        }
+        
+        .status-busy {
+            background: var(--warning);
+        }
+        
+        .server-users {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .usage-container {
+            margin-bottom: 10px;
+        }
+        
+        .usage-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .usage-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .usage-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .usage-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .usage-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        
+        .server-limit {
+            font-size: 14px;
+            color: #666;
+            text-align: right;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 60px 0;
+        }
+        
+        .pricing-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pricing-title h2 {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        
+        .plan {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .plan:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan h3 {
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .price span {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .order-now-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .order-now-btn:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Package Codes */
+        .package-codes {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .package-codes h3 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .package-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .package-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .package-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .package-code {
+            font-family: monospace;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            padding: 8px;
+            background: #f1f3f5;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .package-item:hover .package-code {
+            background: #e9ecef;
+        }
+        
+        .package-price {
+            color: var(--success);
+            font-weight: 600;
+        }
+        
+        /* Payment */
+        .payment {
+            padding: 60px 0;
+            background: #f1f3f5;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .method {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .method-icon {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        .method-name {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .account-info {
+            background: #f8f9fa;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 18px;
+            margin: 15px 0;
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Tutorial Video */
+        .tutorial {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 40px auto 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Gallery */
+        .gallery {
+            padding: 60px 0;
+            background: #f1f3f5;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 60px 0;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .plans-container {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .floating-social {
+                right: 15px;
+                gap: 15px;
+            }
+            
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .server-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .monitor-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .language-switcher {
+                margin-top: 20px;
+            }
+            
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .digital-clock {
+                max-width: 250px;
+            }
+            
+            .time {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Social Buttons -->
+    <div class="floating-social">
+        <a href="https://t.me/jk_vipvpn_bot" class="floating-btn telegram-btn">
+            <i class="fab fa-telegram"></i>
+            <span class="floating-tooltip">Join Telegram Channel</span>
+        </a>
+        <a href="https://www.facebook.com/juehtet2025" class="floating-btn facebook-btn">
+            <i class="fab fa-facebook-f"></i>
+            <span class="floating-tooltip">Visit Facebook Page</span>
+        </a>
+        <a href="https://m.me/juehtet2025" class="floating-btn messenger-btn">
+            <i class="fab fa-facebook-messenger"></i>
+            <span class="floating-tooltip">Message Us on Messenger</span>
+        </a>
+        <a href="https://github.com/Juessh/webadmin/releases/download/v1.2.0/JK.VIP.VPN_1.2.0.apk" class="floating-btn download-btn-floating">
+            <i class="fas fa-download"></i>
+            <span class="floating-tooltip">Download APK</span>
+        </a>
+    </div>
 
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png" alt="JKVPN Logo" class="logo-img">
+                    <div class="logo">JK<span>VPN</span> VIP SERVICE</div>
+                </div>
+                <div class="language-switcher">
+                    <button class="language-btn" id="languageBtn">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                        English
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-options" id="languageOptions">
+                        <div class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                            English
+                        </div>
+                        <div class="language-option" data-lang="th">
+                            <img src="https://flagcdn.com/w20/th.png" alt="Thai" class="language-flag">
+                            ไทย (Thai)
+                        </div>
+                        <div class="language-option" data-lang="my">
+                            <img src="https://flagcdn.com/w20/mm.png" alt="Myanmar" class="language-flag">
+                            မြန်မာ (Myanmar)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Premium VPN Service</h1>
+            <p>High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs</p>
+            
+            <!-- Digital Clock -->
+            <div class="digital-clock">
+                <div class="time" id="digital-time">00:00:00</div>
+                <div class="date" id="digital-date">Loading date...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download APK -->
+    <section class="container">
+        <div class="download-apk">
+            <h3>Download Our Latest App Version</h3>
+            <p>Get the best VPN experience on your mobile device with our optimized application</p>
+            <a href="https://github.com/Juessh/webadmin/releases/download/v1.2.0/JK.VIP.VPN_1.2.0.apk" class="download-btn">
+                <i class="fas fa-download"></i> Download APK (v2.5.0)
+            </a>
+        </div>
+    </section>
+
+    <!-- Server Monitor -->
+    <section class="server-monitor">
+        <div class="container">
+            <div class="monitor-header">
+                <h3 class="monitor-title">Live Server Status Monitor</h3>
+                <div class="total-users">Total Online: <span id="total-users">5,328</span></div>
+            </div>
+            <p class="monitor-subtitle">Updated every 30 seconds • Server limit: 200 users per server</p>
+            <div class="server-time">
+                <i class="fas fa-clock"></i>
+                <span id="server-time">Server Time (Thailand): Loading...</span>
+            </div>
+            <div class="server-grid">
+                <!-- Singapore Server -->
+                <div class="server-card">
+                    <img src="https://flagcdn.com/w40/sg.png" alt="Singapore Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name">Singapore Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span>Online - Excellent</span>
+                        </div>
+                        <div class="server-users">145 active users</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label">Server Load</span>
+                                <span class="usage-value">72.5%</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 72.5%"></div>
+                            </div>
+                        </div>
+                        <div class="server-limit">145/200 users connected</div>
+                    </div>
+                </div>
+                
+                <!-- Japan Server -->
+                <div class="server-card">
+                    <img src="https://flagcdn.com/w40/jp.png" alt="Japan Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name">Japan Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span>Online - Good</span>
+                        </div>
+                        <div class="server-users">128 active users</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label">Server Load</span>
+                                <span class="usage-value">64%</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 64%"></div>
+                            </div>
+                        </div>
+                        <div class="server-limit">128/200 users connected</div>
+                    </div>
+                </div>
+                
+                <!-- USA Server -->
+                <div class="server-card">
+                    <img src="https://flagcdn.com/w40/us.png" alt="USA Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name">USA Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-busy"></div>
+                            <span>High Load</span>
+                        </div>
+                        <div class="server-users">192 active users</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label">Server Load</span>
+                                <span class="usage-value">96%</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 96%"></div>
+                            </div>
+                        </div>
+                        <div class="server-limit">192/200 users connected</div>
+                    </div>
+                </div>
+                
+                <!-- Thailand Server -->
+                <div class="server-card">
+                    <img src="https://flagcdn.com/w40/th.png" alt="Thailand Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name">Thailand Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span>Online - Excellent</span>
+                        </div>
+                        <div class="server-users">87 active users</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label">Server Load</span>
+                                <span class="usage-value">43.5%</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 43.5%"></div>
+                            </div>
+                        </div>
+                        <div class="server-limit">87/200 users connected</div>
+                    </div>
+                </div>
+                
+                <!-- Korea Server -->
+                <div class="server-card">
+                    <img src="https://flagcdn.com/w40/kr.png" alt="Korea Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name">Korea Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span>Online - Good</span>
+                        </div>
+                        <div class="server-users">112 active users</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label">Server Load</span>
+                                <span class="usage-value">56%</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 56%"></div>
+                            </div>
+                        </div>
+                        <div class="server-limit">112/200 users connected</div>
+                    </div>
+                </div>
+                
+                <!-- India Server -->
+                <div class="server-card">
+                    <img src="https://flagcdn.com/w40/in.png" alt="India Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name">India Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span>Online - Good</span>
+                        </div>
+                        <div class="server-users">134 active users</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label">Server Load</span>
+                                <span class="usage-value">67%</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 67%"></div>
+                            </div>
+                        </div>
+                        <div class="server-limit">134/200 users connected</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-title">
+                <h2>Choose Your VIP Plan</h2>
+            </div>
+            <div class="plans-container">
+                <!-- VIP PLAN 1 -->
+                <div class="plan">
+                    <h3>VIP PLAN 1</h3>
+                    <div class="price">50 <span>THB/month</span></div>
+                    <ul class="features">
+                        <li>✅ PRICE 50 THB</li>
+                        <li>✅ No Ads</li>
+                        <li>✅ Unlimited GB</li>
+                        <li>✅ Need Plan</li>
+                        <li>✅ Good For All Networks</li>
+                        <li>🎮 Good For Gaming</li>
+                        <li>💰 Save 50%</li>
+                        <li>⚡ VIP Support 24/7</li>
+                        <li>🌍 All Server Locations</li>
+                        <li>🖥️ 2 Dedicated IPs</li>
+                        <li>🚀 Ultra Speed (1Gbps)</li>
+                        <li>💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 2 -->
+                <div class="plan">
+                    <h3>VIP PLAN 2</h3>
+                    <div class="price">100 <span>THB/month</span></div>
+                    <ul class="features">
+                        <li>✅ PRICE 100 THB</li>
+                        <li>✅ No Ads</li>
+                        <li>✅ Unlimited GB</li>
+                        <li>✅ Need Plan</li>
+                        <li>✅ Good For All Networks</li>
+                        <li>🎮 Good For Gaming</li>
+                        <li>💰 Save 50%</li>
+                        <li>⚡ VIP Support 24/7</li>
+                        <li>🌍 All Server Locations</li>
+                        <li>🖥️ 2 Dedicated IPs</li>
+                        <li>🚀 Ultra Speed (1Gbps)</li>
+                        <li>💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 3 -->
+                <div class="plan">
+                    <h3>VIP PLAN 3</h3>
+                    <div class="price">150 <span>THB/month</span></div>
+                    <ul class="features">
+                        <li>✅ PRICE 150 THB</li>
+                        <li>✅ No Ads</li>
+                        <li>✅ Unlimited GB</li>
+                        <li>✅ Need Plan</li>
+                        <li>✅ Good For All Networks</li>
+                        <li>🎮 Good For Gaming</li>
+                        <li>💰 Save 50%</li>
+                        <li>⚡ VIP Support 24/7</li>
+                        <li>🌍 All Server Locations</li>
+                        <li>🖥️ 2 Dedicated IPs</li>
+                        <li>🚀 Ultra Speed (1Gbps)</li>
+                        <li>💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 4 -->
+                <div class="plan">
+                    <h3>VIP PLAN 4</h3>
+                    <div class="price">200 <span>THB/month</span></div>
+                    <ul class="features">
+                        <li>✅ PRICE 200 THB</li>
+                        <li>✅ No Ads</li>
+                        <li>✅ Unlimited GB</li>
+                        <li>✅ Need Plan</li>
+                        <li>✅ Good For All Networks</li>
+                        <li>🎮 Good For Gaming</li>
+                        <li>💰 Save 50%</li>
+                        <li>⚡ VIP Support 24/7</li>
+                        <li>🌍 All Server Locations</li>
+                        <li>🖥️ 2 Dedicated IPs</li>
+                        <li>🚀 Ultra Speed (1Gbps)</li>
+                        <li>💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 5 -->
+                <div class="plan">
+                    <h3>VIP PLAN 5</h3>
+                    <div class="price">250 <span>THB/month</span></div>
+                    <ul class="features">
+                        <li>✅ PRICE 250 THB</li>
+                        <li>✅ No Ads</li>
+                        <li>✅ Unlimited GB</li>
+                        <li>✅ Need Plan</li>
+                        <li>✅ Good For All Networks</li>
+                        <li>🎮 Good For Gaming</li>
+                        <li>💰 Save 50%</li>
+                        <li>⚡ VIP Support 24/7</li>
+                        <li>🌍 All Server Locations</li>
+                        <li>🖥️ 2 Dedicated IPs</li>
+                        <li>🚀 Ultra Speed (1Gbps)</li>
+                        <li>💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 6 -->
+                <div class="plan">
+                    <h3>VIP PLAN 6</h3>
+                    <div class="price">300 <span>THB/month</span></div>
+                    <ul class="features">
+                        <li>✅ PRICE 300 THB</li>
+                        <li>✅ No Ads</li>
+                        <li>✅ Unlimited GB</li>
+                        <li>✅ Need Plan</li>
+                        <li>✅ Good For All Networks</li>
+                        <li>🎮 Good For Gaming</li>
+                        <li>💰 Save 50%</li>
+                        <li>⚡ VIP Support 24/7</li>
+                        <li>🌍 All Server Locations</li>
+                        <li>🖥️ 2 Dedicated IPs</li>
+                        <li>🚀 Ultra Speed (1Gbps)</li>
+                        <li>💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Codes -->
+    <section class="container">
+        <div class="package-codes">
+            <h3>Our Package Codes</h3>
+            <div class="package-grid">
+                <div class="package-item" onclick="copyToClipboard('*117*30#')">
+                    <div class="package-name">DTAC Jaidee</div>
+                    <div class="package-code">*117*30#</div>
+                    <div class="package-price">30 THB</div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*8131#')">
+                    <div class="package-name">TRUE Jaidee</div>
+                    <div class="package-code">*900*8131#</div>
+                    <div class="package-price">31.50 THB</div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('DTAC APP')">
+                    <div class="package-name">DTAC Gaming Plan</div>
+                    <div class="package-code">DTAC APP</div>
+                    <div class="package-price">-</div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*3809#')">
+                    <div class="package-name">True Viber Plan</div>
+                    <div class="package-code">*900*3809#</div>
+                    <div class="package-price">53 THB</div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*1347#')">
+                    <div class="package-name">True VDO Plan</div>
+                    <div class="package-code">*900*1347#</div>
+                    <div class="package-price">54 THB</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment -->
+    <section class="payment">
+        <div class="container">
+            <div class="pricing-title">
+                <h2>Payment Methods</h2>
+                <p>We accept these payment options</p>
+            </div>
+            <div class="payment-methods">
+                <!-- Binance -->
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <div class="method-name">Binance</div>
+                    <div class="qr-code">
+                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/bnc.png" alt="Binance QR Code" style="width:100%;height:100%;object-fit:contain;">
+                    </div>
+                    <div class="account-info">21976442</div>
+                    <button class="copy-btn" onclick="copyToClipboard('21976442')">
+                        <i class="fas fa-copy"></i> Copy Address
+                    </button>
+                </div>
+                
+                <!-- Kasikorn Bank -->
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="method-name">Kasikorn Bank</div>
+                    <div class="qr-code">
+                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/pp.png" alt="Kasikorn QR Code" style="width:100%;height:100%;object-fit:contain;">
+                    </div>
+                    <div class="account-info">Account: 1818206387</div>
+                    <div class="account-info">Name: MR - KHIN NAING LIN</div>
+                    <button class="copy-btn" onclick="copyToClipboard('1818206387')">
+                        <i class="fas fa-copy"></i> Copy Account
+                    </button>
+                </div>
+                
+                <!-- Other Methods -->
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="method-name">Other Methods</div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p>KBZ Pay, WavePay, AYA Pay, TrueMoney</p>
+                        <p>Contact us for other payment options</p>
+                    </div>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn">Contact on Messenger</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Video -->
+    <section class="tutorial">
+        <div class="container">
+            <div class="pricing-title">
+                <h2>How to Use Our Service</h2>
+                <p>Watch this tutorial video to get started</p>
+            </div>
+            <div class="video-container">
+                <!-- Replace with your actual video embed code -->
+                <iframe src="https://www.youtube.com/embed/O4CYlx89GFE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <div class="pricing-title">
+                <h2>Our Service</h2>
+                <p>Experience the best VPN service</p>
+            </div>
+            <div class="gallery-container">
+                <!-- Image 1 -->
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v1.png" alt="JKVPN App" class="gallery-img">
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v2.png" alt="Speed Test" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <div class="pricing-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch for support</p>
+            </div>
+            <div class="social-links">
+                <a href="https://t.me/jk_vipvpn_bot" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.facebook.com/juehtet2025" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://m.me/juehtet2025" class="social-link"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="tel:0827472711" class="social-link"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 JKVPN VIP SERVICE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language switcher functionality
+        const languageBtn = document.getElementById('languageBtn');
+        const languageOptions = document.getElementById('languageOptions');
+        
+        languageBtn.addEventListener('click', () => {
+            languageOptions.classList.toggle('show');
+        });
+        
+        // Close language options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!languageBtn.contains(e.target) && !languageOptions.contains(e.target)) {
+                languageOptions.classList.remove('show');
+            }
+        });
+        
+        // Change language
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                const flag = option.querySelector('.language-flag').src;
+                const text = option.textContent.trim();
+                
+                // Update button
+                languageBtn.innerHTML = `
+                    <img src="${flag}" alt="${text}" class="language-flag">
+                    ${text}
+                    <i class="fas fa-chevron-down"></i>
+                `;
+                
+                // Close dropdown
+                languageOptions.classList.remove('show');
+                
+                // Change language content
+                changeLanguage(lang);
+            });
+        });
+
+        // Language content
+        const languageContent = {
+            en: {
+                title: "Premium VPN Service",
+                description: "High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs",
+                downloadTitle: "Download Our Latest App Version",
+                downloadDesc: "Get the best VPN experience on your mobile device with our optimized application",
+                downloadBtn: "Download APK (v2.5.0)",
+                monitorTitle: "Live Server Status Monitor",
+                pricingTitle: "Choose Your VIP Plan",
+                packageTitle: "Our Package Codes",
+                paymentTitle: "Payment Methods",
+                paymentDesc: "We accept these payment options",
+                tutorialTitle: "How to Use Our Service",
+                tutorialDesc: "Watch this tutorial video to get started",
+                galleryTitle: "Our Service",
+                galleryDesc: "Experience the best VPN service",
+                contactTitle: "Contact Us",
+                contactDesc: "Get in touch for support",
+                copyAddress: "Copy Address",
+                copyAccount: "Copy Account",
+                contactMessenger: "Contact on Messenger",
+                orderNow: "Order Now"
+            },
+            th: {
+                title: "บริการ VPN ระดับพรีเมียม",
+                description: "VPN ความเร็วสูง ปลอดภัย และเชื่อถือได้ พร้อมแบนด์วิดท์ไม่จำกัดสำหรับทุกความต้องการ",
+                downloadTitle: "ดาวน์โหลดแอพเวอร์ชันล่าสุด",
+                downloadDesc: "รับประสบการณ์ VPN ที่ดีที่สุดบนอุปกรณ์มือถือของคุณด้วยแอปพลิเคชันที่ปรับแต่งมาอย่างดี",
+                downloadBtn: "ดาวน์โหลด APK (v2.5.0)",
+                monitorTitle: "สถานะเซิร์ฟเวอร์แบบเรียลไทม์",
+                pricingTitle: "เลือกแผน VIP ของคุณ",
+                packageTitle: "รหัสแพ็กเกจของเรา",
+                paymentTitle: "วิธีการชำระเงิน",
+                paymentDesc: "เรารองรับวิธีการชำระเงินเหล่านี้",
+                tutorialTitle: "วิธีใช้บริการของเรา",
+                tutorialDesc: "ดูวิดีโอสอนวิธีใช้งานนี้เพื่อเริ่มต้น",
+                galleryTitle: "บริการของเรา",
+                galleryDesc: "สัมผัสประสบการณ์ VPN ที่ดีที่สุด",
+                contactTitle: "ติดต่อเรา",
+                contactDesc: "ติดต่อเพื่อขอรับความช่วยเหลือ",
+                copyAddress: "คัดลอกที่อยู่",
+                copyAccount: "คัดลอกบัญชี",
+                contactMessenger: "ติดต่อผ่าน Messenger",
+                orderNow: "สั่งซื้อตอนนี้"
+            },
+            my: {
+                title: "ပရီမီယံ VPN ဝန်ဆောင်မှု",
+                description: "မြန်နှုန်းမြင့်၊ လုံခြုံပြီး ယုံကြည်စိတ်ချရသော VPN ဝန်ဆောင်မှု",
+                downloadTitle: "ကျွန်ုပ်တို့၏ နောက်ဆုံးထွက် App ကို ဒေါင်းလုဒ်ရယူပါ",
+                downloadDesc: "ကျွန်ုပ်တို့၏ အကောင်းဆုံးစီမံထားသော VPN အက်ပ်ဖြင့် သင့်မိုဘိုင်းစက်ပစ္စည်းပေါ်တွင် အကောင်းဆုံးအတွေ့အကြုံကိုရယူပါ",
+                downloadBtn: "APK ဒေါင်းလုဒ် (v2.5.0)",
+                monitorTitle: "ဆာဗာအခြေအနေ ကြည့်ရှုရန်",
+                pricingTitle: "သင့်ရဲ့ VIP ပလန်ကို ရွေးချယ်ပါ",
+                packageTitle: "ကျွန်ုပ်တို့၏ Package Codes များ",
+                paymentTitle: "ငွေပေးချေမှုနည်းလမ်းများ",
+                paymentDesc: "ကျွန်ုပ်တို့သည် ဤငွေပေးချေမှုနည်းလမ်းများကို လက်ခံပါသည်",
+                tutorialTitle: "ကျွန်ုပ်တို့၏ဝန်ဆောင်မှုကို အသုံးပြုနည်း",
+                tutorialDesc: "စတင်ရန် ဤသင်ခန်းစာဗီဒီယိုကို ကြည့်ပါ",
+                galleryTitle: "ကျွန်ုပ်တို့၏ဝန်ဆောင်မှု",
+                galleryDesc: "အကောင်းဆုံး VPN အတွေ့အကြုံကို ရယူပါ",
+                contactTitle: "ဆက်သွယ်ရန်",
+                contactDesc: "အကူအညီရယူရန် ဆက်သွယ်ပါ",
+                copyAddress: "လိပ်စာကိုကူးယူပါ",
+                copyAccount: "အကောင့်ကိုကူးယူပါ",
+                contactMessenger: "Messenger တွင် ဆက်သွယ်ပါ",
+                orderNow: "အခုပဲမှာယူပါ"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
+            const content = languageContent[lang];
+            
+            // Update all text elements
+            document.querySelector('.hero h1').textContent = content.title;
+            document.querySelector('.hero p').textContent = content.description;
+            document.querySelector('.download-apk h3').textContent = content.downloadTitle;
+            document.querySelector('.download-apk p').textContent = content.downloadDesc;
+            document.querySelector('.download-btn').innerHTML = `<i class="fas fa-download"></i> ${content.downloadBtn}`;
+            document.querySelector('.monitor-title').textContent = content.monitorTitle;
+            document.querySelector('.pricing-title h2').textContent = content.pricingTitle;
+            document.querySelector('.package-codes h3').textContent = content.packageTitle;
+            document.querySelector('.payment h2').textContent = content.paymentTitle;
+            document.querySelector('.payment p').textContent = content.paymentDesc;
+            document.querySelector('.tutorial h2').textContent = content.tutorialTitle;
+            document.querySelector('.tutorial p').textContent = content.tutorialDesc;
+            document.querySelector('.gallery h2').textContent = content.galleryTitle;
+            document.querySelector('.gallery p').textContent = content.galleryDesc;
+            document.querySelector('.contact h2').textContent = content.contactTitle;
+            document.querySelector('.contact p').textContent = content.contactDesc;
+            
+            // Update buttons
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                if (btn.textContent.includes('Copy Address')) {
+                    btn.innerHTML = `<i class="fas fa-copy"></i> ${content.copyAddress}`;
+                } else if (btn.textContent.includes('Copy Account')) {
+                    btn.innerHTML = `<i class="fas fa-copy"></i> ${content.copyAccount}`;
+                }
+            });
+            
+            document.querySelectorAll('.order-now-btn').forEach(btn => {
+                btn.textContent = content.orderNow;
+            });
+            
+            document.querySelector('.payment .order-now-btn').textContent = content.contactMessenger;
+        }
+
+        // Auto-refresh server status every 30 seconds
+        function refreshServerStatus() {
+            // Calculate new random values within server limits
+            const servers = [
+                { id: 'sg', current: 145, max: 200 },
+                { id: 'jp', current: 128, max: 200 },
+                { id: 'us', current: 192, max: 200 },
+                { id: 'th', current: 87, max: 200 },
+                { id: 'kr', current: 112, max: 200 },
+                { id: 'in', current: 134, max: 200 }
+            ];
+            
+            let totalUsers = 0;
+            
+            servers.forEach(server => {
+                // Generate random change (-20 to +20)
+                const change = Math.floor(Math.random() * 41) - 20;
+                let newCount = server.current + change;
+                
+                // Ensure within limits (5-200)
+                newCount = Math.max(5, Math.min(server.max, newCount));
+                
+                // Update display
+                const card = document.querySelector(`.server-card:nth-child(${servers.indexOf(server)+1})`);
+                if (card) {
+                    // Update user count
+                    card.querySelector('.server-users').textContent = `${newCount} active users`;
+                    
+                    // Calculate percentage
+                    const percentage = Math.round((newCount / server.max) * 100);
+                    
+                    // Update progress bar
+                    const progressBar = card.querySelector('.usage-progress');
+                    progressBar.style.width = `${percentage}%`;
+                    
+                    // Update percentage text
+                    card.querySelector('.usage-value').textContent = `${percentage}%`;
+                    
+                    // Update limit text
+                    card.querySelector('.server-limit').textContent = `${newCount}/${server.max} users connected`;
+                    
+                    // Update status if needed
+                    if (percentage > 90) {
+                        card.querySelector('.status-indicator').className = 'status-indicator status-busy';
+                        card.querySelector('.server-status span').textContent = 'High Load';
+                    } else if (percentage > 70) {
+                        card.querySelector('.status-indicator').className = 'status-indicator status-online';
+                        card.querySelector('.server-status span').textContent = 'Online - Good';
+                    } else {
+                        card.querySelector('.status-indicator').className = 'status-indicator status-online';
+                        card.querySelector('.server-status span').textContent = 'Online - Excellent';
+                    }
+                    
+                    // Update server data
+                    server.current = newCount;
+                    totalUsers += newCount;
+                }
+            });
+            
+            // Update total users
+            document.getElementById('total-users').textContent = totalUsers.toLocaleString();
+            
+            console.log("Server status refreshed at " + new Date().toLocaleTimeString());
+        }
+        
+        // Update server time (Thailand timezone)
+        function updateServerTime() {
+            const options = {
+                timeZone: 'Asia/Bangkok',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const thaiTime = formatter.format(new Date());
+            document.getElementById('server-time').textContent = `Server Time (Thailand): ${thaiTime}`;
+        }
+        
+        // Update digital clock (Thailand timezone)
+        function updateDigitalClock() {
+            const now = new Date();
+            
+            // Set to Thailand timezone
+            const options = { 
+                timeZone: 'Asia/Bangkok',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false 
+            };
+            const timeFormatter = new Intl.DateTimeFormat('en-US', options);
+            const timeStr = timeFormatter.format(now);
+            
+            // Format date
+            const dateOptions = { 
+                timeZone: 'Asia/Bangkok',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric' 
+            };
+            const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
+            const dateStr = dateFormatter.format(now);
+            
+            document.getElementById('digital-time').textContent = timeStr;
+            document.getElementById('digital-date').textContent = dateStr;
+        }
+        
+        // Initial calls and set intervals
+        refreshServerStatus();
+        updateServerTime();
+        updateDigitalClock();
+        setInterval(refreshServerStatus, 30000);
+        setInterval(updateServerTime, 1000);
+        setInterval(updateDigitalClock, 1000);
+        
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard: ' + text);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
