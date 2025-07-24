@@ -325,7 +325,7 @@
         }
         
         .download-logo {
-            height: 60px;
+            height: 60px;  /* Increased from 40px to 60px */
             width: auto;
         }
         
@@ -452,33 +452,9 @@
         }
         
         .server-ping {
-            display: flex;
-            align-items: center;
-            gap: 5px;
             font-size: 14px;
+            color: #666;
             margin-bottom: 10px;
-        }
-        
-        .ping-value {
-            font-weight: 600;
-        }
-        
-        .ping-good {
-            color: var(--success);
-        }
-        
-        .ping-medium {
-            color: var(--warning);
-        }
-        
-        .ping-bad {
-            color: var(--danger);
-        }
-        
-        .server-alive {
-            font-size: 14px;
-            margin-bottom: 15px;
-            color: var(--success);
         }
         
         .usage-container {
@@ -523,13 +499,12 @@
             text-align: right;
         }
         
-        /* Performance Graph */
-        .performance-graph {
+        /* Graph Styles */
+        .server-graph {
             height: 60px;
+            width: 100%;
             margin-top: 15px;
             position: relative;
-            border-radius: 5px;
-            overflow: hidden;
         }
         
         .graph-line {
@@ -537,16 +512,24 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 1px;
+            height: 2px;
             background-color: rgba(0,0,0,0.1);
         }
         
         .graph-point {
             position: absolute;
-            bottom: 0;
-            width: 3px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
             background-color: var(--primary);
-            transition: height 0.5s ease;
+            transform: translate(-50%, 50%);
+        }
+        
+        .graph-connection {
+            position: absolute;
+            height: 2px;
+            background-color: var(--primary);
+            transform-origin: left center;
         }
         
         /* Pricing */
@@ -960,7 +943,7 @@
             }
             
             .download-logo {
-                height: 50px;
+                height: 50px; /* Slightly smaller on mobile */
             }
         }
     </style>
@@ -1059,7 +1042,7 @@
                 <h3 class="monitor-title">Live Server Status Monitor</h3>
                 <div class="total-users">Total Online: <span id="total-users">5,328</span></div>
             </div>
-            <p class="monitor-subtitle">Updated every 1 minute • Server limit: 100 users per server</p>
+            <p class="monitor-subtitle">Updated every minute • Server limit: 200 users per server</p>
             <div class="server-time">
                 <i class="fas fa-clock"></i>
                 <span id="server-time">Server Time (Thailand): Loading...</span>
@@ -1074,37 +1057,21 @@
                             <div class="status-indicator status-online"></div>
                             <span>Online - Excellent</span>
                         </div>
-                        <div class="server-users">72 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-good">32ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.9%</span>
-                        </div>
+                        <div class="server-users">145 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">45</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">72%</span>
+                                <span class="usage-value">72.5%</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 72%"></div>
+                                <div class="usage-progress" style="width: 72.5%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">145/200 users connected</div>
+                        <div class="server-graph" id="sg-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 60%"></div>
-                            <div class="graph-point" style="left: 15%; height: 65%"></div>
-                            <div class="graph-point" style="left: 25%; height: 70%"></div>
-                            <div class="graph-point" style="left: 35%; height: 68%"></div>
-                            <div class="graph-point" style="left: 45%; height: 72%"></div>
-                            <div class="graph-point" style="left: 55%; height: 75%"></div>
-                            <div class="graph-point" style="left: 65%; height: 70%"></div>
-                            <div class="graph-point" style="left: 75%; height: 68%"></div>
-                            <div class="graph-point" style="left: 85%; height: 72%"></div>
-                            <div class="graph-point" style="left: 95%; height: 70%"></div>
                         </div>
-                        <div class="server-limit">72/100 users connected</div>
                     </div>
                 </div>
                 
@@ -1117,14 +1084,8 @@
                             <div class="status-indicator status-online"></div>
                             <span>Online - Good</span>
                         </div>
-                        <div class="server-users">64 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-good">45ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.8%</span>
-                        </div>
+                        <div class="server-users">128 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">62</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
@@ -1134,20 +1095,10 @@
                                 <div class="usage-progress" style="width: 64%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">128/200 users connected</div>
+                        <div class="server-graph" id="jp-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 55%"></div>
-                            <div class="graph-point" style="left: 15%; height: 60%"></div>
-                            <div class="graph-point" style="left: 25%; height: 62%"></div>
-                            <div class="graph-point" style="left: 35%; height: 65%"></div>
-                            <div class="graph-point" style="left: 45%; height: 64%"></div>
-                            <div class="graph-point" style="left: 55%; height: 66%"></div>
-                            <div class="graph-point" style="left: 65%; height: 62%"></div>
-                            <div class="graph-point" style="left: 75%; height: 64%"></div>
-                            <div class="graph-point" style="left: 85%; height: 65%"></div>
-                            <div class="graph-point" style="left: 95%; height: 64%"></div>
                         </div>
-                        <div class="server-limit">64/100 users connected</div>
                     </div>
                 </div>
                 
@@ -1160,14 +1111,8 @@
                             <div class="status-indicator status-busy"></div>
                             <span>High Load</span>
                         </div>
-                        <div class="server-users">96 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-medium">78ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.5%</span>
-                        </div>
+                        <div class="server-users">192 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">28</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
@@ -1177,20 +1122,10 @@
                                 <div class="usage-progress" style="width: 96%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">192/200 users connected</div>
+                        <div class="server-graph" id="th-game-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 85%"></div>
-                            <div class="graph-point" style="left: 15%; height: 88%"></div>
-                            <div class="graph-point" style="left: 25%; height: 90%"></div>
-                            <div class="graph-point" style="left: 35%; height: 92%"></div>
-                            <div class="graph-point" style="left: 45%; height: 94%"></div>
-                            <div class="graph-point" style="left: 55%; height: 96%"></div>
-                            <div class="graph-point" style="left: 65%; height: 95%"></div>
-                            <div class="graph-point" style="left: 75%; height: 93%"></div>
-                            <div class="graph-point" style="left: 85%; height: 96%"></div>
-                            <div class="graph-point" style="left: 95%; height: 95%"></div>
                         </div>
-                        <div class="server-limit">96/100 users connected</div>
                     </div>
                 </div>
                 
@@ -1203,37 +1138,21 @@
                             <div class="status-indicator status-online"></div>
                             <span>Online - Excellent</span>
                         </div>
-                        <div class="server-users">43 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-good">12ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.9%</span>
-                        </div>
+                        <div class="server-users">87 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">32</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">43%</span>
+                                <span class="usage-value">43.5%</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 43%"></div>
+                                <div class="usage-progress" style="width: 43.5%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">87/200 users connected</div>
+                        <div class="server-graph" id="th-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 35%"></div>
-                            <div class="graph-point" style="left: 15%; height: 40%"></div>
-                            <div class="graph-point" style="left: 25%; height: 42%"></div>
-                            <div class="graph-point" style="left: 35%; height: 45%"></div>
-                            <div class="graph-point" style="left: 45%; height: 43%"></div>
-                            <div class="graph-point" style="left: 55%; height: 45%"></div>
-                            <div class="graph-point" style="left: 65%; height: 42%"></div>
-                            <div class="graph-point" style="left: 75%; height: 44%"></div>
-                            <div class="graph-point" style="left: 85%; height: 45%"></div>
-                            <div class="graph-point" style="left: 95%; height: 43%"></div>
                         </div>
-                        <div class="server-limit">43/100 users connected</div>
                     </div>
                 </div>
                 
@@ -1246,14 +1165,8 @@
                             <div class="status-indicator status-online"></div>
                             <span>Online - Good</span>
                         </div>
-                        <div class="server-users">56 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-good">52ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.7%</span>
-                        </div>
+                        <div class="server-users">112 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">78</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
@@ -1263,20 +1176,10 @@
                                 <div class="usage-progress" style="width: 56%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">112/200 users connected</div>
+                        <div class="server-graph" id="kr-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 48%"></div>
-                            <div class="graph-point" style="left: 15%; height: 52%"></div>
-                            <div class="graph-point" style="left: 25%; height: 54%"></div>
-                            <div class="graph-point" style="left: 35%; height: 56%"></div>
-                            <div class="graph-point" style="left: 45%; height: 55%"></div>
-                            <div class="graph-point" style="left: 55%; height: 56%"></div>
-                            <div class="graph-point" style="left: 65%; height: 54%"></div>
-                            <div class="graph-point" style="left: 75%; height: 55%"></div>
-                            <div class="graph-point" style="left: 85%; height: 56%"></div>
-                            <div class="graph-point" style="left: 95%; height: 55%"></div>
                         </div>
-                        <div class="server-limit">56/100 users connected</div>
                     </div>
                 </div>
                 
@@ -1289,14 +1192,8 @@
                             <div class="status-indicator status-online"></div>
                             <span>Online - Good</span>
                         </div>
-                        <div class="server-users">67 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-medium">112ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.6%</span>
-                        </div>
+                        <div class="server-users">134 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">95</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
@@ -1306,20 +1203,10 @@
                                 <div class="usage-progress" style="width: 67%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">134/200 users connected</div>
+                        <div class="server-graph" id="in-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 60%"></div>
-                            <div class="graph-point" style="left: 15%; height: 62%"></div>
-                            <div class="graph-point" style="left: 25%; height: 65%"></div>
-                            <div class="graph-point" style="left: 35%; height: 67%"></div>
-                            <div class="graph-point" style="left: 45%; height: 65%"></div>
-                            <div class="graph-point" style="left: 55%; height: 67%"></div>
-                            <div class="graph-point" style="left: 65%; height: 65%"></div>
-                            <div class="graph-point" style="left: 75%; height: 66%"></div>
-                            <div class="graph-point" style="left: 85%; height: 67%"></div>
-                            <div class="graph-point" style="left: 95%; height: 65%"></div>
                         </div>
-                        <div class="server-limit">67/100 users connected</div>
                     </div>
                 </div>
                 
@@ -1332,14 +1219,8 @@
                             <div class="status-indicator status-online"></div>
                             <span>Online - Excellent</span>
                         </div>
-                        <div class="server-users">46 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-good">28ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.9%</span>
-                        </div>
+                        <div class="server-users">92 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">52</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
@@ -1349,20 +1230,10 @@
                                 <div class="usage-progress" style="width: 46%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">92/200 users connected</div>
+                        <div class="server-graph" id="hk-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 40%"></div>
-                            <div class="graph-point" style="left: 15%; height: 42%"></div>
-                            <div class="graph-point" style="left: 25%; height: 45%"></div>
-                            <div class="graph-point" style="left: 35%; height: 46%"></div>
-                            <div class="graph-point" style="left: 45%; height: 45%"></div>
-                            <div class="graph-point" style="left: 55%; height: 46%"></div>
-                            <div class="graph-point" style="left: 65%; height: 45%"></div>
-                            <div class="graph-point" style="left: 75%; height: 45%"></div>
-                            <div class="graph-point" style="left: 85%; height: 46%"></div>
-                            <div class="graph-point" style="left: 95%; height: 45%"></div>
                         </div>
-                        <div class="server-limit">46/100 users connected</div>
                     </div>
                 </div>
                 
@@ -1375,37 +1246,21 @@
                             <div class="status-indicator status-online"></div>
                             <span>Online - Good</span>
                         </div>
-                        <div class="server-users">58 active users</div>
-                        <div class="server-ping">
-                            <span>Ping:</span>
-                            <span class="ping-value ping-bad">185ms</span>
-                        </div>
-                        <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.4%</span>
-                        </div>
+                        <div class="server-users">105 active users</div>
+                        <div class="server-ping">Ping: <span class="ping-value">120</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">58%</span>
+                                <span class="usage-value">52.5%</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 58%"></div>
+                                <div class="usage-progress" style="width: 52.5%"></div>
                             </div>
                         </div>
-                        <div class="performance-graph">
+                        <div class="server-limit">105/200 users connected</div>
+                        <div class="server-graph" id="us-graph">
                             <div class="graph-line"></div>
-                            <div class="graph-point" style="left: 5%; height: 50%"></div>
-                            <div class="graph-point" style="left: 15%; height: 52%"></div>
-                            <div class="graph-point" style="left: 25%; height: 55%"></div>
-                            <div class="graph-point" style="left: 35%; height: 56%"></div>
-                            <div class="graph-point" style="left: 45%; height: 58%"></div>
-                            <div class="graph-point" style="left: 55%; height: 56%"></div>
-                            <div class="graph-point" style="left: 65%; height: 55%"></div>
-                            <div class="graph-point" style="left: 75%; height: 56%"></div>
-                            <div class="graph-point" style="left: 85%; height: 58%"></div>
-                            <div class="graph-point" style="left: 95%; height: 56%"></div>
                         </div>
-                        <div class="server-limit">58/100 users connected</div>
                     </div>
                 </div>
             </div>
@@ -1866,152 +1721,145 @@
             document.querySelector('.payment .order-now-btn').textContent = content.contactMessenger;
         }
 
-        // Server data persistence
-        function getServerData() {
-            const defaultServers = [
-                { id: 'sg', name: 'Singapore Server', current: 72, max: 100, ping: 32, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good', statusClass: 'status-online' },
-                { id: 'jp', name: 'Japan Server', current: 64, max: 100, ping: 45, alive: 99.8, status: 'Online - Good', pingClass: 'ping-good', statusClass: 'status-online' },
-                { id: 'th-game', name: 'Thailand Game Server 🎮', current: 96, max: 100, ping: 78, alive: 99.5, status: 'High Load', pingClass: 'ping-medium', statusClass: 'status-busy' },
-                { id: 'th', name: 'Thailand Server', current: 43, max: 100, ping: 12, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good', statusClass: 'status-online' },
-                { id: 'kr', name: 'Korea Server', current: 56, max: 100, ping: 52, alive: 99.7, status: 'Online - Good', pingClass: 'ping-good', statusClass: 'status-online' },
-                { id: 'in', name: 'India Server', current: 67, max: 100, ping: 112, alive: 99.6, status: 'Online - Good', pingClass: 'ping-medium', statusClass: 'status-online' },
-                { id: 'hk', name: 'Hong Kong Server', current: 46, max: 100, ping: 28, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good', statusClass: 'status-online' },
-                { id: 'us', name: 'US Server', current: 58, max: 100, ping: 185, alive: 99.4, status: 'Online - Good', pingClass: 'ping-bad', statusClass: 'status-online' }
-            ];
+        // Server data with consistent user counts across devices
+        const serverData = {
+            servers: [
+                { id: 'sg', name: 'Singapore Server', flag: 'sg', current: 145, max: 200, basePing: 45 },
+                { id: 'jp', name: 'Japan Server', flag: 'jp', current: 128, max: 200, basePing: 62 },
+                { id: 'th-game', name: 'Thailand Game Server 🎮', flag: 'th', current: 192, max: 200, basePing: 28 },
+                { id: 'th', name: 'Thailand Server', flag: 'th', current: 87, max: 200, basePing: 32 },
+                { id: 'kr', name: 'Korea Server', flag: 'kr', current: 112, max: 200, basePing: 78 },
+                { id: 'in', name: 'India Server', flag: 'in', current: 134, max: 200, basePing: 95 },
+                { id: 'hk', name: 'Hong Kong Server', flag: 'hk', current: 92, max: 200, basePing: 52 },
+                { id: 'us', name: 'US Server', flag: 'us', current: 105, max: 200, basePing: 120 }
+            ],
+            graphData: {}
+        };
 
-            const savedServers = localStorage.getItem('serverData');
-            if (savedServers) {
-                return JSON.parse(savedServers);
-            } else {
-                localStorage.setItem('serverData', JSON.stringify(defaultServers));
-                return defaultServers;
+        // Initialize graph data for each server
+        serverData.servers.forEach(server => {
+            serverData.graphData[server.id] = [];
+            // Generate initial random data points
+            for (let i = 0; i < 10; i++) {
+                serverData.graphData[server.id].push(
+                    Math.max(5, Math.min(server.max, server.current + Math.floor(Math.random() * 41) - 20))
+                );
             }
-        }
+        });
 
-        // Auto-refresh server status every 1 minute
+        // Function to update server status with consistent user counts
         function refreshServerStatus() {
-            const servers = getServerData();
             let totalUsers = 0;
             
-            // Update each server with small random changes
-            const updatedServers = servers.map(server => {
-                // Generate random change (-5 to +5) for user count
-                const userChange = Math.floor(Math.random() * 11) - 5;
-                let newCount = Math.max(5, Math.min(server.max, server.current + userChange));
+            serverData.servers.forEach(server => {
+                // Get the card element
+                const card = document.querySelector(`.server-card[data-server-id="${server.id}"]`);
+                if (!card) return;
                 
-                // Generate random ping variation (-10ms to +10ms)
-                const pingChange = Math.floor(Math.random() * 21) - 10;
-                let newPing = Math.max(5, server.ping + pingChange);
+                // Calculate percentage
+                const percentage = Math.round((server.current / server.max) * 100);
                 
-                // Determine ping class based on new ping value
-                let pingClass = 'ping-good';
-                if (newPing > 100) pingClass = 'ping-medium';
-                if (newPing > 150) pingClass = 'ping-bad';
+                // Update user count
+                card.querySelector('.server-users').textContent = `${server.current} active users`;
                 
-                // Small alive variation (-0.1% to +0.1%)
-                const aliveChange = (Math.random() * 0.2) - 0.1;
-                let newAlive = Math.max(99, Math.min(100, server.alive + aliveChange)).toFixed(1);
+                // Update ping with small random variation
+                const ping = server.basePing + Math.floor(Math.random() * 10) - 5;
+                card.querySelector('.ping-value').textContent = ping;
                 
-                // Calculate load percentage
-                const percentage = Math.round((newCount / server.max) * 100);
+                // Update progress bar
+                const progressBar = card.querySelector('.usage-progress');
+                progressBar.style.width = `${percentage}%`;
                 
-                // Update status based on load
-                let newStatus, statusClass;
+                // Update percentage text
+                card.querySelector('.usage-value').textContent = `${percentage}%`;
+                
+                // Update limit text
+                card.querySelector('.server-limit').textContent = `${server.current}/${server.max} users connected`;
+                
+                // Update status if needed
                 if (percentage > 90) {
-                    newStatus = 'High Load';
-                    statusClass = 'status-busy';
+                    card.querySelector('.status-indicator').className = 'status-indicator status-busy';
+                    card.querySelector('.server-status span').textContent = 'High Load';
                 } else if (percentage > 70) {
-                    newStatus = 'Online - Good';
-                    statusClass = 'status-online';
+                    card.querySelector('.status-indicator').className = 'status-indicator status-online';
+                    card.querySelector('.server-status span').textContent = 'Online - Good';
                 } else {
-                    newStatus = 'Online - Excellent';
-                    statusClass = 'status-online';
+                    card.querySelector('.status-indicator').className = 'status-indicator status-online';
+                    card.querySelector('.server-status span').textContent = 'Online - Excellent';
                 }
                 
-                totalUsers += newCount;
+                // Update total users
+                totalUsers += server.current;
                 
-                return {
-                    ...server,
-                    current: newCount,
-                    ping: newPing,
-                    alive: newAlive,
-                    status: newStatus,
-                    statusClass: statusClass,
-                    pingClass: pingClass
-                };
+                // Update graph data
+                updateServerGraph(server.id);
             });
             
-            // Save updated data
-            localStorage.setItem('serverData', JSON.stringify(updatedServers));
-            
-            // Update display
-            updateServerDisplay(updatedServers, totalUsers);
+            // Update total users
+            document.getElementById('total-users').textContent = totalUsers.toLocaleString();
             
             console.log("Server status refreshed at " + new Date().toLocaleTimeString());
         }
         
-        // Update server display
-        function updateServerDisplay(servers, totalUsers) {
-            // Update total users
-            document.getElementById('total-users').textContent = totalUsers.toLocaleString();
+        // Function to update server graph
+        function updateServerGraph(serverId) {
+            const graphContainer = document.getElementById(`${serverId}-graph`);
+            if (!graphContainer) return;
             
-            // Update each server card
-            servers.forEach((server, index) => {
-                const card = document.querySelector(`.server-card:nth-child(${index+1})`);
+            // Shift data and add new point
+            const data = serverData.graphData[serverId];
+            data.shift();
+            const server = serverData.servers.find(s => s.id === serverId);
+            data.push(
+                Math.max(5, Math.min(server.max, server.current + Math.floor(Math.random() * 41) - 20))
+            );
+            
+            // Clear existing graph
+            graphContainer.innerHTML = '<div class="graph-line"></div>';
+            
+            // Calculate positions for each data point
+            const maxData = Math.max(...data);
+            const minData = Math.min(...data);
+            const range = maxData - minData || 1; // Avoid division by zero
+            
+            // Add points and connections
+            for (let i = 0; i < data.length; i++) {
+                const x = (i / (data.length - 1)) * 100;
+                const y = 100 - ((data[i] - minData) / range * 100);
+                
+                // Create point
+                const point = document.createElement('div');
+                point.className = 'graph-point';
+                point.style.left = `${x}%`;
+                point.style.bottom = `${y}%`;
+                graphContainer.appendChild(point);
+                
+                // Create connection to next point (if exists)
+                if (i < data.length - 1) {
+                    const nextX = ((i + 1) / (data.length - 1)) * 100;
+                    const nextY = 100 - ((data[i + 1] - minData) / range * 100);
+                    
+                    const length = Math.sqrt(Math.pow(nextX - x, 2) + Math.pow(nextY - y, 2));
+                    const angle = Math.atan2(nextY - y, nextX - x) * 180 / Math.PI;
+                    
+                    const connection = document.createElement('div');
+                    connection.className = 'graph-connection';
+                    connection.style.left = `${x}%`;
+                    connection.style.bottom = `${y}%`;
+                    connection.style.width = `${length}%`;
+                    connection.style.transform = `rotate(${angle}deg)`;
+                    graphContainer.appendChild(connection);
+                }
+            }
+        }
+        
+        // Function to update ping values every 5 seconds
+        function updatePingValues() {
+            serverData.servers.forEach(server => {
+                const card = document.querySelector(`.server-card[data-server-id="${server.id}"]`);
                 if (card) {
-                    // Update basic info
-                    card.querySelector('.server-name').textContent = server.name;
-                    card.querySelector('.server-users').textContent = `${server.current} active users`;
-                    
-                    // Update ping
-                    const pingElement = card.querySelector('.ping-value');
-                    pingElement.textContent = `${server.ping}ms`;
-                    pingElement.className = `ping-value ${server.pingClass}`;
-                    
-                    // Update alive status
-                    const aliveElement = card.querySelector('.alive-text');
-                    if (aliveElement) {
-                        aliveElement.textContent = `Alive: ${server.alive}%`;
-                    }
-                    
-                    // Update status
-                    card.querySelector('.server-status span').textContent = server.status;
-                    const statusIndicator = card.querySelector('.status-indicator');
-                    if (statusIndicator) {
-                        statusIndicator.className = `status-indicator ${server.statusClass}`;
-                    }
-                    
-                    // Calculate percentage
-                    const percentage = Math.round((server.current / server.max) * 100);
-                    
-                    // Update progress bar
-                    const progressBar = card.querySelector('.usage-progress');
-                    if (progressBar) {
-                        progressBar.style.width = `${percentage}%`;
-                    }
-                    
-                    // Update percentage text
-                    const usageValue = card.querySelector('.usage-value');
-                    if (usageValue) {
-                        usageValue.textContent = `${percentage}%`;
-                    }
-                    
-                    // Update limit text
-                    const serverLimit = card.querySelector('.server-limit');
-                    if (serverLimit) {
-                        serverLimit.textContent = `${server.current}/${server.max} users connected`;
-                    }
-                    
-                    // Update graph with random variations
-                    const graphPoints = card.querySelectorAll('.graph-point');
-                    if (graphPoints) {
-                        graphPoints.forEach((point, i) => {
-                            // Base height on current percentage with some variation
-                            const variation = Math.floor(Math.random() * 10) - 5;
-                            const newHeight = Math.max(5, Math.min(100, percentage + variation));
-                            point.style.height = `${newHeight}%`;
-                        });
-                    }
+                    const ping = server.basePing + Math.floor(Math.random() * 10) - 5;
+                    card.querySelector('.ping-value').textContent = ping;
                 }
             });
         }
@@ -2035,14 +1883,14 @@
             const now = new Date();
             
             // Set to Thailand timezone
-            const timeOptions = { 
+            const options = { 
                 timeZone: 'Asia/Bangkok',
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
                 hour12: false 
             };
-            const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
+            const timeFormatter = new Intl.DateTimeFormat('en-US', options);
             const timeStr = timeFormatter.format(now);
             
             // Format date
@@ -2060,19 +1908,25 @@
             document.getElementById('digital-date').textContent = dateStr;
         }
         
+        // Initialize server cards with data attributes
+        function initializeServerCards() {
+            serverData.servers.forEach(server => {
+                const card = document.querySelector(`.server-card:nth-child(${serverData.servers.indexOf(server) + 1})`);
+                if (card) {
+                    card.setAttribute('data-server-id', server.id);
+                }
+            });
+        }
+        
         // Initial calls and set intervals
-        document.addEventListener('DOMContentLoaded', function() {
-            const initialServers = getServerData();
-            const initialTotalUsers = initialServers.reduce((sum, server) => sum + server.current, 0);
-            updateServerDisplay(initialServers, initialTotalUsers);
-            updateServerTime();
-            updateDigitalClock();
-            
-            // Set up intervals
-            setInterval(refreshServerStatus, 60000); // 1 minute
-            setInterval(updateServerTime, 1000);
-            setInterval(updateDigitalClock, 1000);
-        });
+        initializeServerCards();
+        refreshServerStatus();
+        updateServerTime();
+        updateDigitalClock();
+        setInterval(refreshServerStatus, 60000); // Refresh every 1 minute
+        setInterval(updatePingValues, 5000); // Update ping every 5 seconds
+        setInterval(updateServerTime, 1000);
+        setInterval(updateDigitalClock, 1000);
         
         // Copy to clipboard function
         function copyToClipboard(text) {
