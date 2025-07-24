@@ -1895,31 +1895,28 @@
             
             // Update each server with small random changes
             const updatedServers = servers.map(server => {
-                // Generate random change (-5 to +5)
-                const change = Math.floor(Math.random() * 11) - 5;
-                let newCount = server.current + change;
+                // Generate random change (-5 to +5) for user count
+                const userChange = Math.floor(Math.random() * 11) - 5;
+                let newCount = Math.max(5, Math.min(server.max, server.current + userChange));
                 
-                // Ensure within limits (5-100)
-                newCount = Math.max(5, Math.min(server.max, newCount));
+                // Generate random ping variation (-10ms to +10ms)
+                const pingChange = Math.floor(Math.random() * 21) - 10;
+                let newPing = Math.max(5, server.ping + pingChange);
                 
-                // Random ping variation (-10ms to +10ms)
-                let newPing = server.ping + (Math.floor(Math.random() * 21) - 10;
-                newPing = Math.max(5, newPing);
-                
-                // Determine ping class
+                // Determine ping class based on new ping value
                 let pingClass = 'ping-good';
                 if (newPing > 100) pingClass = 'ping-medium';
                 if (newPing > 150) pingClass = 'ping-bad';
                 
-                // Small alive variation
-                let newAlive = server.alive + (Math.random() * 0.2 - 0.1);
-                newAlive = Math.max(99, Math.min(100, newAlive)).toFixed(1);
+                // Small alive variation (-0.1% to +0.1%)
+                const aliveChange = (Math.random() * 0.2) - 0.1;
+                let newAlive = Math.max(99, Math.min(100, server.alive + aliveChange)).toFixed(1);
+                
+                // Calculate load percentage
+                const percentage = Math.round((newCount / server.max) * 100);
                 
                 // Update status based on load
-                const percentage = Math.round((newCount / server.max) * 100);
-                let newStatus = server.status;
-                let statusClass = 'status-online';
-                
+                let newStatus, statusClass;
                 if (percentage > 90) {
                     newStatus = 'High Load';
                     statusClass = 'status-busy';
@@ -1994,9 +1991,9 @@
                     // Update graph with random variations
                     const graphPoints = card.querySelectorAll('.graph-point');
                     graphPoints.forEach((point, i) => {
-                        const baseHeight = percentage;
+                        // Base height on current percentage with some variation
                         const variation = Math.floor(Math.random() * 10) - 5;
-                        const newHeight = Math.max(5, Math.min(100, baseHeight + variation));
+                        const newHeight = Math.max(5, Math.min(100, percentage + variation));
                         point.style.height = `${newHeight}%`;
                     });
                 }
@@ -2022,14 +2019,14 @@
             const now = new Date();
             
             // Set to Thailand timezone
-            const options = { 
+            const timeOptions = { 
                 timeZone: 'Asia/Bangkok',
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
                 hour12: false 
             };
-            const timeFormatter = new Intl.DateTimeFormat('en-US', options);
+            const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
             const timeStr = timeFormatter.format(now);
             
             // Format date
@@ -2053,6 +2050,8 @@
         updateServerDisplay(initialServers, initialTotalUsers);
         updateServerTime();
         updateDigitalClock();
+        
+        // Set up intervals
         setInterval(refreshServerStatus, 60000); // 1 minute
         setInterval(updateServerTime, 1000);
         setInterval(updateDigitalClock, 1000);
