@@ -1080,7 +1080,7 @@
                             <span class="ping-value ping-good">32ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.9%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.9%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1123,7 +1123,7 @@
                             <span class="ping-value ping-good">45ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.8%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.8%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1166,7 +1166,7 @@
                             <span class="ping-value ping-medium">78ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.5%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.5%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1209,7 +1209,7 @@
                             <span class="ping-value ping-good">12ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.9%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.9%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1252,7 +1252,7 @@
                             <span class="ping-value ping-good">52ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.7%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.7%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1295,7 +1295,7 @@
                             <span class="ping-value ping-medium">112ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.6%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.6%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1338,7 +1338,7 @@
                             <span class="ping-value ping-good">28ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.9%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.9%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1381,7 +1381,7 @@
                             <span class="ping-value ping-bad">185ms</span>
                         </div>
                         <div class="server-alive">
-                            <i class="fas fa-check-circle"></i> Alive: 99.4%
+                            <i class="fas fa-check-circle"></i> <span class="alive-text">Alive: 99.4%</span>
                         </div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1869,14 +1869,14 @@
         // Server data persistence
         function getServerData() {
             const defaultServers = [
-                { id: 'sg', name: 'Singapore Server', current: 72, max: 100, ping: 32, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good' },
-                { id: 'jp', name: 'Japan Server', current: 64, max: 100, ping: 45, alive: 99.8, status: 'Online - Good', pingClass: 'ping-good' },
-                { id: 'th-game', name: 'Thailand Game Server 🎮', current: 96, max: 100, ping: 78, alive: 99.5, status: 'High Load', pingClass: 'ping-medium' },
-                { id: 'th', name: 'Thailand Server', current: 43, max: 100, ping: 12, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good' },
-                { id: 'kr', name: 'Korea Server', current: 56, max: 100, ping: 52, alive: 99.7, status: 'Online - Good', pingClass: 'ping-good' },
-                { id: 'in', name: 'India Server', current: 67, max: 100, ping: 112, alive: 99.6, status: 'Online - Good', pingClass: 'ping-medium' },
-                { id: 'hk', name: 'Hong Kong Server', current: 46, max: 100, ping: 28, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good' },
-                { id: 'us', name: 'US Server', current: 58, max: 100, ping: 185, alive: 99.4, status: 'Online - Good', pingClass: 'ping-bad' }
+                { id: 'sg', name: 'Singapore Server', current: 72, max: 100, ping: 32, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good', statusClass: 'status-online' },
+                { id: 'jp', name: 'Japan Server', current: 64, max: 100, ping: 45, alive: 99.8, status: 'Online - Good', pingClass: 'ping-good', statusClass: 'status-online' },
+                { id: 'th-game', name: 'Thailand Game Server 🎮', current: 96, max: 100, ping: 78, alive: 99.5, status: 'High Load', pingClass: 'ping-medium', statusClass: 'status-busy' },
+                { id: 'th', name: 'Thailand Server', current: 43, max: 100, ping: 12, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good', statusClass: 'status-online' },
+                { id: 'kr', name: 'Korea Server', current: 56, max: 100, ping: 52, alive: 99.7, status: 'Online - Good', pingClass: 'ping-good', statusClass: 'status-online' },
+                { id: 'in', name: 'India Server', current: 67, max: 100, ping: 112, alive: 99.6, status: 'Online - Good', pingClass: 'ping-medium', statusClass: 'status-online' },
+                { id: 'hk', name: 'Hong Kong Server', current: 46, max: 100, ping: 28, alive: 99.9, status: 'Online - Excellent', pingClass: 'ping-good', statusClass: 'status-online' },
+                { id: 'us', name: 'US Server', current: 58, max: 100, ping: 185, alive: 99.4, status: 'Online - Good', pingClass: 'ping-bad', statusClass: 'status-online' }
             ];
 
             const savedServers = localStorage.getItem('serverData');
@@ -1969,33 +1969,49 @@
                     pingElement.className = `ping-value ${server.pingClass}`;
                     
                     // Update alive status
-                    card.querySelector('.server-alive').innerHTML = `<i class="fas fa-check-circle"></i> Alive: ${server.alive}%`;
+                    const aliveElement = card.querySelector('.alive-text');
+                    if (aliveElement) {
+                        aliveElement.textContent = `Alive: ${server.alive}%`;
+                    }
                     
                     // Update status
                     card.querySelector('.server-status span').textContent = server.status;
-                    card.querySelector('.status-indicator').className = `status-indicator ${server.statusClass}`;
+                    const statusIndicator = card.querySelector('.status-indicator');
+                    if (statusIndicator) {
+                        statusIndicator.className = `status-indicator ${server.statusClass}`;
+                    }
                     
                     // Calculate percentage
                     const percentage = Math.round((server.current / server.max) * 100);
                     
                     // Update progress bar
                     const progressBar = card.querySelector('.usage-progress');
-                    progressBar.style.width = `${percentage}%`;
+                    if (progressBar) {
+                        progressBar.style.width = `${percentage}%`;
+                    }
                     
                     // Update percentage text
-                    card.querySelector('.usage-value').textContent = `${percentage}%`;
+                    const usageValue = card.querySelector('.usage-value');
+                    if (usageValue) {
+                        usageValue.textContent = `${percentage}%`;
+                    }
                     
                     // Update limit text
-                    card.querySelector('.server-limit').textContent = `${server.current}/${server.max} users connected`;
+                    const serverLimit = card.querySelector('.server-limit');
+                    if (serverLimit) {
+                        serverLimit.textContent = `${server.current}/${server.max} users connected`;
+                    }
                     
                     // Update graph with random variations
                     const graphPoints = card.querySelectorAll('.graph-point');
-                    graphPoints.forEach((point, i) => {
-                        // Base height on current percentage with some variation
-                        const variation = Math.floor(Math.random() * 10) - 5;
-                        const newHeight = Math.max(5, Math.min(100, percentage + variation));
-                        point.style.height = `${newHeight}%`;
-                    });
+                    if (graphPoints) {
+                        graphPoints.forEach((point, i) => {
+                            // Base height on current percentage with some variation
+                            const variation = Math.floor(Math.random() * 10) - 5;
+                            const newHeight = Math.max(5, Math.min(100, percentage + variation));
+                            point.style.height = `${newHeight}%`;
+                        });
+                    }
                 }
             });
         }
