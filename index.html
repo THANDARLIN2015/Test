@@ -2024,13 +2024,6 @@
             document.getElementById('digital-date').textContent = dateStr;
         }
         
-        // Auto refresh the page every 30 seconds
-        function setupAutoRefresh() {
-            setTimeout(() => {
-                window.location.reload();
-            }, 30000); // 30 seconds
-        }
-        
         // Initial calls and set intervals
         initializeServerStatus();
         updateServerTime();
@@ -2039,7 +2032,6 @@
         setInterval(updatePingValues, 5000); // Update ping every 5 seconds
         setInterval(updateServerTime, 1000);
         setInterval(updateDigitalClock, 1000);
-        setupAutoRefresh();
         
         // Copy to clipboard function
         function copyToClipboard(text) {
