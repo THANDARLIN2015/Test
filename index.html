@@ -452,10 +452,6 @@
             background: var(--danger);
         }
         
-        .status-busy {
-            background: var(--warning);
-        }
-        
         .status-good {
             background: var(--info);
         }
@@ -525,10 +521,6 @@
         
         .usage-value.good {
             color: #3498db;
-        }
-        
-        .usage-value.busy {
-            color: #fdcb6e;
         }
         
         .usage-bar {
@@ -1267,14 +1259,14 @@
                         <div class="server-name">All India Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Busy</span>
+                            <span>Online - Good</span>
                         </div>
-                        <div class="server-users">Active Users: <span class="user-count-yellow">48</span></div>
+                        <div class="server-users">Active Users: <span class="user-count-blue">48</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-poor">95</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value busy">75% - Busy</span>
+                                <span class="usage-value good">75% - Good</span>
                             </div>
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 75%"></div>
@@ -1323,14 +1315,14 @@
                         <div class="server-name">All US Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Busy</span>
+                            <span>Online - Good</span>
                         </div>
-                        <div class="server-users">Active Users: <span class="user-count-yellow">49</span></div>
+                        <div class="server-users">Active Users: <span class="user-count-blue">49</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-bad">120</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value busy">80% - Busy</span>
+                                <span class="usage-value good">80% - Good</span>
                             </div>
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 80%"></div>
@@ -1925,17 +1917,14 @@
         function getServerLoadStatus(percentage) {
             if (percentage <= 40) {
                 return { class: 'excellent', text: 'Excellent', color: '#00b894' };
-            } else if (percentage <= 70) {
-                return { class: 'good', text: 'Good', color: '#3498db' };
             } else {
-                return { class: 'busy', text: 'Busy', color: '#fdcb6e' };
+                return { class: 'good', text: 'Good', color: '#3498db' };
             }
         }
 
         function getUserCountColor(count) {
             if (count <= 40) return 'user-count-green';
-            if (count <= 45) return 'user-count-blue';
-            return 'user-count-yellow';
+            return 'user-count-blue';
         }
 
         function getPingStatus(ping) {
@@ -1996,14 +1985,7 @@
                     
                     if (statusIndicator && statusText) {
                         statusIndicator.className = 'status-indicator status-online';
-                        
-                        if (percentage <= 40) {
-                            statusText.textContent = 'Online - Excellent';
-                        } else if (percentage <= 70) {
-                            statusText.textContent = 'Online - Good';
-                        } else {
-                            statusText.textContent = 'Online - Busy';
-                        }
+                        statusText.textContent = `Online - ${loadStatus.text}`;
                     }
                     
                     totalUsers += Math.round(server.currentUsers);
@@ -2063,7 +2045,7 @@
             }
         }
 
-        // Update server status (called every minute)
+        // Update server status (called every 20 seconds)
         function updateServerStatus() {
             // Update the last update time
             serverData.lastUpdateTime = Date.now();
