@@ -550,6 +550,15 @@
             height: 100%;
         }
         
+        .graph-status {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 10px;
+            color: #00b894;
+            font-weight: bold;
+        }
+        
         /* Active user color coding */
         .user-count-green {
             color: #00b894;
@@ -569,6 +578,13 @@
         .user-count-red {
             color: #d63031;
             font-weight: bold;
+        }
+        
+        /* Connected Users */
+        .connected-users {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
         }
         
         /* Pricing */
@@ -1094,7 +1110,7 @@
                         <div class="server-name">All Thailand Server 1</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Excellent (Green)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-green">35</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
@@ -1106,9 +1122,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 40%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 35/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="th1-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1120,7 +1138,7 @@
                         <div class="server-name">All Singapore Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Good (Blue)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-green">45</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
@@ -1132,9 +1150,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 65%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 45/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="sg-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1146,7 +1166,7 @@
                         <div class="server-name">All Japan Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Good (Blue)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-blue">42</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">62</span> ms</div>
@@ -1158,9 +1178,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 55%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 42/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="jp-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1172,7 +1194,7 @@
                         <div class="server-name">All Thailand Game Server 🎮</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Excellent (Green)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-green">38</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">28</span> ms</div>
@@ -1184,9 +1206,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 35%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 38/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="th-game-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1198,7 +1222,7 @@
                         <div class="server-name">All Thailand Server 2</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Excellent (Green)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-green">32</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">32</span> ms</div>
@@ -1210,9 +1234,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 30%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 32/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="th2-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1224,7 +1250,7 @@
                         <div class="server-name">All Korea Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Good (Blue)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-blue">45</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-good">78</span> ms</div>
@@ -1236,9 +1262,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 60%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 45/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="kr-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1250,7 +1278,7 @@
                         <div class="server-name">All India Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Busy (Yellow)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-yellow">48</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-poor">95</span> ms</div>
@@ -1262,9 +1290,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 75%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 48/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="in-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1276,7 +1306,7 @@
                         <div class="server-name">All Hong Kong Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Good (Blue)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-blue">40</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">52</span> ms</div>
@@ -1288,9 +1318,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 50%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 40/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="hk-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1302,7 +1334,7 @@
                         <div class="server-name">All US Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online</span>
+                            <span>Online - Busy (Yellow)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-yellow">49</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-poor">120</span> ms</div>
@@ -1314,9 +1346,11 @@
                             <div class="usage-bar">
                                 <div class="usage-progress" style="width: 80%"></div>
                             </div>
+                            <div class="connected-users">Connected Users: 49/50</div>
                         </div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="us-graph"></canvas>
+                            <div class="graph-status">alive</div>
                         </div>
                     </div>
                 </div>
@@ -1973,7 +2007,8 @@
 
         function getUserCountColor(count) {
             if (count <= 40) return 'user-count-green';
-            return 'user-count-blue';
+            if (count <= 45) return 'user-count-blue';
+            return 'user-count-yellow';
         }
 
         // Update server status UI based on current data
@@ -2038,7 +2073,15 @@
                 
                 if (statusIndicator && statusText) {
                     statusIndicator.className = 'status-indicator status-online';
-                    statusText.textContent = 'Online - ' + loadStatus.text;
+                    
+                    // Set status text with color indicator
+                    if (percentage <= 40) {
+                        statusText.textContent = 'Online - Excellent (Green)';
+                    } else if (percentage <= 70) {
+                        statusText.textContent = 'Online - Good (Blue)';
+                    } else {
+                        statusText.textContent = 'Online - Busy (Yellow)';
+                    }
                 }
                 
                 // Update total users
