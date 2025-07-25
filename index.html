@@ -1675,118 +1675,40 @@
                 
                 // Close dropdown
                 languageOptions.classList.remove('show');
-                
-                // Change language content
-                changeLanguage(lang);
             });
         });
 
-        // Language content
-        const languageContent = {
-            en: {
-                title: "Premium VPN Service",
-                description: "High-speed, secure, and reliable VPN with unlimited bandwidth for all your needs",
-                downloadTitle: "Download Our Latest App Version",
-                downloadDesc: "Get the best VPN experience on your mobile device with our optimized application",
-                downloadBtn: "Download APK (v2.5.0)",
-                monitorTitle: "Live Server Status Monitor",
-                pricingTitle: "Choose Your VIP Plan",
-                packageTitle: "Our Package Codes",
-                paymentTitle: "Payment Methods",
-                paymentDesc: "We accept these payment options",
-                tutorialTitle: "How to Use Our Service",
-                tutorialDesc: "Watch this tutorial video to get started",
-                galleryTitle: "Our Service",
-                galleryDesc: "Experience the best VPN service",
-                contactTitle: "Contact Us",
-                contactDesc: "Get in touch for support",
-                copyAddress: "Copy Address",
-                copyAccount: "Copy Account",
-                contactMessenger: "Contact on Messenger",
-                orderNow: "Order Now"
-            },
-            th: {
-                title: "บริการ VPN ระดับพรีเมียม",
-                description: "VPN ความเร็วสูง ปลอดภัย และเชื่อถือได้ พร้อมแบนด์วิดท์ไม่จำกัดสำหรับทุกความต้องการ",
-                downloadTitle: "ดาวน์โหลดแอพเวอร์ชันล่าสุด",
-                downloadDesc: "รับประสบการณ์ VPN ที่ดีที่สุดบนอุปกรณ์มือถือของคุณด้วยแอปพลิเคชันที่ปรับแต่งมาอย่างดี",
-                downloadBtn: "ดาวน์โหลด APK (v2.5.0)",
-                monitorTitle: "สถานะเซิร์ฟเวอร์แบบเรียลไทม์",
-                pricingTitle: "เลือกแผน VIP ของคุณ",
-                packageTitle: "รหัสแพ็กเกจของเรา",
-                paymentTitle: "วิธีการชำระเงิน",
-                paymentDesc: "เรารองรับวิธีการชำระเงินเหล่านี้",
-                tutorialTitle: "วิธีใช้บริการของเรา",
-                tutorialDesc: "ดูวิดีโอสอนวิธีใช้งานนี้เพื่อเริ่มต้น",
-                galleryTitle: "บริการของเรา",
-                galleryDesc: "สัมผัสประสบการณ์ VPN ที่ดีที่สุด",
-                contactTitle: "ติดต่อเรา",
-                contactDesc: "ติดต่อเพื่อขอรับความช่วยเหลือ",
-                copyAddress: "คัดลอกที่อยู่",
-                copyAccount: "คัดลอกบัญชี",
-                contactMessenger: "ติดต่อผ่าน Messenger",
-                orderNow: "สั่งซื้อตอนนี้"
-            },
-            my: {
-                title: "ပရီမီယံ VPN ဝန်ဆောင်မှု",
-                description: "မြန်နှုန်းမြင့်၊ လုံခြုံပြီး ယုံကြည်စိတ်ချရသော VPN ဝန်ဆောင်မှု",
-                downloadTitle: "ကျွန်ုပ်တို့၏ နောက်ဆုံးထွက် App ကို ဒေါင်းလုဒ်ရယူပါ",
-                downloadDesc: "ကျွန်ုပ်တို့၏ အကောင်းဆုံးစီမံထားသော VPN အက်ပ်ဖြင့် သင့်မိုဘိုင်းစက်ပစ္စည်းပေါ်တွင် အကောင်းဆုံးအတွေ့အကြုံကိုရယူပါ",
-                downloadBtn: "APK ဒေါင်းလုဒ် (v2.5.0)",
-                monitorTitle: "ဆာဗာအခြေအနေ ကြည့်ရှုရန်",
-                pricingTitle: "သင့်ရဲ့ VIP ပလန်ကို ရွေးချယ်ပါ",
-                packageTitle: "ကျွန်ုပ်တို့၏ Package Codes များ",
-                paymentTitle: "ငွေပေးချေမှုနည်းလမ်းများ",
-                paymentDesc: "ကျွန်ုပ်တို့သည် ဤငွေပေးချေမှုနည်းလမ်းများကို လက်ခံပါသည်",
-                tutorialTitle: "ကျွန်ုပ်တို့၏ဝန်ဆောင်မှုကို အသုံးပြုနည်း",
-                tutorialDesc: "စတင်ရန် ဤသင်ခန်းစာဗီဒီယိုကို ကြည့်ပါ",
-                galleryTitle: "ကျွန်ုပ်တို့၏ဝန်ဆောင်မှု",
-                galleryDesc: "အကောင်းဆုံး VPN အတွေ့အကြုံကို ရယူပါ",
-                contactTitle: "ဆက်သွယ်ရန်",
-                contactDesc: "အကူအညီရယူရန် ဆက်သွယ်ပါ",
-                copyAddress: "လိပ်စာကိုကူးယူပါ",
-                copyAccount: "အကောင့်ကိုကူးယူပါ",
-                contactMessenger: "Messenger တွင် ဆက်သွယ်ပါ",
-                orderNow: "အခုပဲမှာယူပါ"
+        // Digital Clock with error handling
+        function updateDigitalClock() {
+            try {
+                const now = new Date();
+                const options = { 
+                    timeZone: 'Asia/Bangkok',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false 
+                };
+                const timeFormatter = new Intl.DateTimeFormat('en-US', options);
+                const timeStr = timeFormatter.format(now);
+                
+                const dateOptions = { 
+                    timeZone: 'Asia/Bangkok',
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric' 
+                };
+                const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
+                const dateStr = dateFormatter.format(now);
+                
+                document.getElementById('digital-time').textContent = timeStr;
+                document.getElementById('digital-date').textContent = dateStr;
+            } catch (e) {
+                console.error("Clock error:", e);
+                document.getElementById('digital-time').textContent = new Date().toLocaleTimeString();
+                document.getElementById('digital-date').textContent = new Date().toLocaleDateString();
             }
-        };
-
-        // Function to change language
-        function changeLanguage(lang) {
-            const content = languageContent[lang];
-            
-            // Update all text elements
-            document.querySelector('.hero h1').textContent = content.title;
-            document.querySelector('.hero p').textContent = content.description;
-            document.querySelector('.download-apk h3').textContent = content.downloadTitle;
-            document.querySelector('.download-apk p').textContent = content.downloadDesc;
-            document.querySelector('.download-btn').innerHTML = `<i class="fas fa-download"></i> ${content.downloadBtn}`;
-            document.querySelector('.monitor-title').textContent = content.monitorTitle;
-            document.querySelector('.pricing-title h2').textContent = content.pricingTitle;
-            document.querySelector('.package-codes h3').textContent = content.packageTitle;
-            document.querySelector('.payment h2').textContent = content.paymentTitle;
-            document.querySelector('.payment p').textContent = content.paymentDesc;
-            document.querySelector('.tutorial h2').textContent = content.tutorialTitle;
-            document.querySelector('.tutorial p').textContent = content.tutorialDesc;
-            document.querySelector('.gallery h2').textContent = content.galleryTitle;
-            document.querySelector('.gallery p').textContent = content.galleryDesc;
-            document.querySelector('.contact h2').textContent = content.contactTitle;
-            document.querySelector('.contact p').textContent = content.contactDesc;
-            
-            // Update buttons
-            document.querySelectorAll('.copy-btn').forEach(btn => {
-                if (btn.textContent.includes('Copy Address')) {
-                    btn.innerHTML = `<i class="fas fa-copy"></i> ${content.copyAddress}`;
-                } else if (btn.textContent.includes('Copy Account')) {
-                    btn.innerHTML = `<i class="fas fa-copy"></i> ${content.copyAccount}`;
-                }
-            });
-            
-            document.querySelectorAll('.order-now-btn').forEach(btn => {
-                btn.textContent = content.orderNow;
-            });
-            
-            document.querySelector('.payment .order-now-btn').textContent = content.contactMessenger;
         }
 
         // Server data with persistent status across refreshes
@@ -1877,89 +1799,106 @@
 
         // Initialize server status from localStorage if available
         function initializeServerStatus() {
-            const savedStatus = localStorage.getItem('serverStatus');
-            if (savedStatus) {
-                const parsedStatus = JSON.parse(savedStatus);
-                serverData.servers = parsedStatus;
+            try {
+                const savedStatus = localStorage.getItem('serverStatus');
+                if (savedStatus) {
+                    const parsedStatus = JSON.parse(savedStatus);
+                    serverData.servers = parsedStatus;
+                }
+                updateServerStatusUI();
+                initializeServerGraphs();
+            } catch (e) {
+                console.error("Server status initialization error:", e);
+                // Initialize with default values if error occurs
+                updateServerStatusUI();
+                initializeServerGraphs();
             }
-            updateServerStatusUI();
-            initializeServerGraphs();
         }
 
         // Initialize server graphs with OpenVPN style
         function initializeServerGraphs() {
-            serverData.servers.forEach(server => {
-                const ctx = document.getElementById(`${server.id}-graph`).getContext('2d');
-                
-                // Initialize with empty data
-                server.pingHistory = Array(30).fill(server.basePing);
-                
-                const chart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: Array(30).fill(''),
-                        datasets: [
-                            {
-                                label: 'Download',
-                                data: Array(30).fill(0).map(() => Math.random() * 80 + 20),
-                                borderColor: '#00b894',
-                                backgroundColor: 'rgba(0, 184, 148, 0.1)',
-                                borderWidth: 2,
-                                pointRadius: 0,
-                                fill: true,
-                                tension: 0.4
-                            },
-                            {
-                                label: 'Upload',
-                                data: Array(30).fill(0).map(() => Math.random() * 50 + 10),
-                                borderColor: '#3498db',
-                                backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                                borderWidth: 2,
-                                pointRadius: 0,
-                                fill: true,
-                                tension: 0.4
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    stepSize: 20,
-                                    callback: function(value) {
-                                        return value + ' Mbps';
+            try {
+                serverData.servers.forEach(server => {
+                    const canvas = document.getElementById(`${server.id}-graph`);
+                    if (!canvas) {
+                        console.error(`Canvas not found for server ${server.id}`);
+                        return;
+                    }
+                    
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Initialize with empty data
+                    server.pingHistory = Array(30).fill(server.basePing);
+                    
+                    const chart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: Array(30).fill(''),
+                            datasets: [
+                                {
+                                    label: 'Download',
+                                    data: Array(30).fill(0).map(() => Math.random() * 80 + 20),
+                                    borderColor: '#00b894',
+                                    backgroundColor: 'rgba(0, 184, 148, 0.1)',
+                                    borderWidth: 2,
+                                    pointRadius: 0,
+                                    fill: true,
+                                    tension: 0.4
+                                },
+                                {
+                                    label: 'Upload',
+                                    data: Array(30).fill(0).map(() => Math.random() * 50 + 10),
+                                    borderColor: '#3498db',
+                                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                                    borderWidth: 2,
+                                    pointRadius: 0,
+                                    fill: true,
+                                    tension: 0.4
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    ticks: {
+                                        stepSize: 20,
+                                        callback: function(value) {
+                                            return value + ' Mbps';
+                                        }
+                                    },
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.05)'
                                     }
                                 },
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)'
+                                x: {
+                                    display: false
                                 }
                             },
-                            x: {
-                                display: false
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
+                            plugins: {
+                                legend: {
+                                    display: false
+                                },
+                                tooltip: {
+                                    enabled: false
+                                }
                             },
-                            tooltip: {
-                                enabled: false
-                            }
-                        },
-                        elements: {
-                            line: {
-                                tension: 0.4
+                            elements: {
+                                line: {
+                                    tension: 0.4
+                                }
                             }
                         }
-                    }
+                    });
+                    
+                    server.chart = chart;
                 });
-                
-                server.chart = chart;
-            });
+            } catch (e) {
+                console.error("Graph initialization error:", e);
+            }
         }
 
         function getServerLoadStatus(percentage) {
@@ -1986,89 +1925,88 @@
 
         // Update server status UI based on current data
         function updateServerStatusUI() {
-            let totalUsers = 0;
-            
-            serverData.servers.forEach(server => {
-                // Get the card element
-                const card = document.querySelector(`.server-card[data-server-id="${server.id}"]`);
-                if (!card) return;
+            try {
+                let totalUsers = 0;
                 
-                // Calculate percentage
-                const percentage = Math.round((server.currentUsers / server.maxCapacity) * 100);
-                const loadStatus = getServerLoadStatus(percentage);
-                const pingStatus = getPingStatus(server.basePing);
-                
-                // Update user count with color coding
-                const userCountElement = card.querySelector('.server-users span') || card.querySelector('.server-users');
-                if (userCountElement) {
-                    userCountElement.textContent = server.currentUsers;
-                    
-                    // Remove all color classes first
-                    userCountElement.classList.remove('user-count-green', 'user-count-blue', 'user-count-yellow', 'user-count-red');
-                    
-                    // Add appropriate color class
-                    userCountElement.classList.add(getUserCountColor(server.currentUsers));
-                }
-                
-                // Update ping with color coding
-                const pingElement = card.querySelector('.ping-value');
-                if (pingElement) {
-                    pingElement.textContent = server.basePing;
-                    pingElement.className = 'ping-value ' + pingStatus.class;
-                }
-                
-                // Update progress bar
-                const progressBar = card.querySelector('.usage-progress');
-                if (progressBar) {
-                    progressBar.style.width = `${percentage}%`;
-                    progressBar.style.background = loadStatus.color;
-                }
-                
-                // Update percentage text
-                const usageValue = card.querySelector('.usage-value');
-                if (usageValue) {
-                    usageValue.textContent = `${percentage}% - ${loadStatus.text}`;
-                    usageValue.className = 'usage-value ' + loadStatus.class;
-                }
-                
-                // Update status
-                const statusIndicator = card.querySelector('.status-indicator');
-                const statusText = card.querySelector('.server-status span');
-                
-                if (statusIndicator && statusText) {
-                    statusIndicator.className = 'status-indicator status-online';
-                    
-                    // Set status text with color indicator
-                    if (percentage <= 40) {
-                        statusText.textContent = 'Online - Excellent (Green)';
-                    } else if (percentage <= 70) {
-                        statusText.textContent = 'Online - Good (Blue)';
-                    } else {
-                        statusText.textContent = 'Online - Busy (Yellow)';
+                serverData.servers.forEach(server => {
+                    const card = document.querySelector(`.server-card[data-server-id="${server.id}"]`);
+                    if (!card) {
+                        console.error(`Card not found for server ${server.id}`);
+                        return;
                     }
-                }
-                
-                // Update total users
-                totalUsers += server.currentUsers;
-                
-                // Update chart
-                if (server.chart) {
-                    // Shift and add new values
-                    server.chart.data.datasets[0].data.shift();
-                    server.chart.data.datasets[0].data.push(Math.random() * 80 + 20);
                     
-                    server.chart.data.datasets[1].data.shift();
-                    server.chart.data.datasets[1].data.push(Math.random() * 50 + 10);
+                    // Calculate percentage
+                    const percentage = Math.round((server.currentUsers / server.maxCapacity) * 100);
+                    const loadStatus = getServerLoadStatus(percentage);
+                    const pingStatus = getPingStatus(server.basePing);
                     
-                    server.chart.update();
-                }
-            });
-            
-            // Update total users with formatting
-            document.getElementById('total-users').textContent = totalUsers.toLocaleString();
+                    // Update user count with color coding
+                    const userCountElement = card.querySelector('.server-users span') || card.querySelector('.server-users');
+                    if (userCountElement) {
+                        userCountElement.textContent = server.currentUsers;
+                        userCountElement.className = '';
+                        userCountElement.classList.add(getUserCountColor(server.currentUsers));
+                    }
+                    
+                    // Update ping with color coding
+                    const pingElement = card.querySelector('.ping-value');
+                    if (pingElement) {
+                        pingElement.textContent = server.basePing;
+                        pingElement.className = 'ping-value ' + pingStatus.class;
+                    }
+                    
+                    // Update progress bar
+                    const progressBar = card.querySelector('.usage-progress');
+                    if (progressBar) {
+                        progressBar.style.width = `${percentage}%`;
+                        progressBar.style.background = loadStatus.color;
+                    }
+                    
+                    // Update percentage text
+                    const usageValue = card.querySelector('.usage-value');
+                    if (usageValue) {
+                        usageValue.textContent = `${percentage}% - ${loadStatus.text}`;
+                        usageValue.className = 'usage-value ' + loadStatus.class;
+                    }
+                    
+                    // Update status
+                    const statusIndicator = card.querySelector('.status-indicator');
+                    const statusText = card.querySelector('.server-status span');
+                    
+                    if (statusIndicator && statusText) {
+                        statusIndicator.className = 'status-indicator status-online';
+                        
+                        if (percentage <= 40) {
+                            statusText.textContent = 'Online - Excellent (Green)';
+                        } else if (percentage <= 70) {
+                            statusText.textContent = 'Online - Good (Blue)';
+                        } else {
+                            statusText.textContent = 'Online - Busy (Yellow)';
+                        }
+                    }
+                    
+                    totalUsers += server.currentUsers;
+                    
+                    // Update chart
+                    if (server.chart) {
+                        // Shift and add new values
+                        server.chart.data.datasets[0].data.shift();
+                        server.chart.data.datasets[0].data.push(Math.random() * 80 + 20);
+                        
+                        server.chart.data.datasets[1].data.shift();
+                        server.chart.data.datasets[1].data.push(Math.random() * 50 + 10);
+                        
+                        server.chart.update();
+                    }
+                });
+                
+                document.getElementById('total-users').textContent = totalUsers.toLocaleString();
+            } catch (e) {
+                console.error("UI update error:", e);
+            }
         }
 
-        // Function to update server status (called every minute)
+        // Update server status (called every minute)
         function updateServerStatus() {
             // Generate small random variations in user counts
             serverData.servers.forEach(server => {
@@ -2114,57 +2052,23 @@
         
         // Update server time (Thailand timezone)
         function updateServerTime() {
-            const options = {
-                timeZone: 'Asia/Bangkok',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            };
-            const formatter = new Intl.DateTimeFormat('en-US', options);
-            const thaiTime = formatter.format(new Date());
-            document.getElementById('server-time').textContent = `Server Time (Thailand): ${thaiTime}`;
+            try {
+                const options = {
+                    timeZone: 'Asia/Bangkok',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+                const formatter = new Intl.DateTimeFormat('en-US', options);
+                const thaiTime = formatter.format(new Date());
+                document.getElementById('server-time').textContent = `Server Time (Thailand): ${thaiTime}`;
+            } catch (e) {
+                console.error("Server time error:", e);
+                document.getElementById('server-time').textContent = `Server Time: ${new Date().toLocaleTimeString()}`;
+            }
         }
-        
-        // Update digital clock (Thailand timezone)
-        function updateDigitalClock() {
-            const now = new Date();
-            
-            // Set to Thailand timezone
-            const options = { 
-                timeZone: 'Asia/Bangkok',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false 
-            };
-            const timeFormatter = new Intl.DateTimeFormat('en-US', options);
-            const timeStr = timeFormatter.format(now);
-            
-            // Format date
-            const dateOptions = { 
-                timeZone: 'Asia/Bangkok',
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric' 
-            };
-            const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
-            const dateStr = dateFormatter.format(now);
-            
-            document.getElementById('digital-time').textContent = timeStr;
-            document.getElementById('digital-date').textContent = dateStr;
-        }
-        
-        // Initial calls and set intervals
-        initializeServerStatus();
-        updateServerTime();
-        updateDigitalClock();
-        setInterval(updateServerStatus, 20000); // Update server status every 20 seconds
-        setInterval(updatePingValues, 5000); // Update ping every 5 seconds
-        setInterval(updateServerTime, 1000);
-        setInterval(updateDigitalClock, 1000);
-        
+
         // Copy to clipboard function
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
@@ -2173,6 +2077,18 @@
                 console.error('Failed to copy: ', err);
             });
         }
+
+        // Initial calls and set intervals
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeServerStatus();
+            updateServerTime();
+            updateDigitalClock();
+            
+            setInterval(updateServerStatus, 20000); // Update server status every 20 seconds
+            setInterval(updatePingValues, 5000); // Update ping every 5 seconds
+            setInterval(updateServerTime, 1000);
+            setInterval(updateDigitalClock, 1000);
+        });
     </script>
 </body>
 </html>
