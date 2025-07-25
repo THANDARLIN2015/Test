@@ -359,6 +359,15 @@
             padding: 10px 20px;
             border-radius: 50px;
             font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .last-update {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 5px;
         }
         
         .monitor-subtitle {
@@ -1100,7 +1109,10 @@
         <div class="container">
             <div class="monitor-header">
                 <h3 class="monitor-title">Live Server Status Monitor</h3>
-                <div class="total-users">Total Online: <span id="total-users">5,328</span></div>
+                <div class="total-users">
+                    Total Online: <span id="total-users">5,328</span>
+                    <div class="last-update" id="last-update">Last Update: 0 seconds ago</div>
+                </div>
             </div>
             <p class="monitor-subtitle">Updated every minute • Server limit: 50 users per server</p>
             <div class="server-time">
@@ -1115,7 +1127,7 @@
                         <div class="server-name">All Thailand Server 1</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent </span>
+                            <span>Online - Excellent</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-green">35</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
@@ -1143,7 +1155,7 @@
                         <div class="server-name">All Singapore Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Good </span>
+                            <span>Online - Good</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-green">45</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
@@ -1171,7 +1183,7 @@
                         <div class="server-name">All Japan Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Good </span>
+                            <span>Online - Good</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-blue">42</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">62</span> ms</div>
@@ -1199,7 +1211,7 @@
                         <div class="server-name">All Thailand Game Server 🎮</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent </span>
+                            <span>Online - Excellent</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-green">38</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">28</span> ms</div>
@@ -1227,7 +1239,7 @@
                         <div class="server-name">All Korea Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Good </span>
+                            <span>Online - Good</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-blue">45</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-good">78</span> ms</div>
@@ -1255,7 +1267,7 @@
                         <div class="server-name">All India Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Busy </span>
+                            <span>Online - Busy</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-yellow">48</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-poor">95</span> ms</div>
@@ -1283,7 +1295,7 @@
                         <div class="server-name">All Hong Kong Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Good </span>
+                            <span>Online - Good</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-blue">40</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">52</span> ms</div>
@@ -1311,7 +1323,7 @@
                         <div class="server-name">All US Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Busy </span>
+                            <span>Online - Busy</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-yellow">49</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-bad">120</span> ms</div>
@@ -1718,83 +1730,92 @@
                     id: 'th1', 
                     name: 'All Thailand Server 1', 
                     flag: 'th', 
-                    currentUsers: 35,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 45,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 35
                 },
                 { 
                     id: 'sg', 
                     name: 'All Singapore Server', 
                     flag: 'sg', 
-                    currentUsers: 45,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 45,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 45
                 },
                 { 
                     id: 'jp', 
                     name: 'All Japan Server', 
                     flag: 'jp', 
-                    currentUsers: 42,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 62,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 42
                 },
                 { 
                     id: 'th-game', 
                     name: 'All Thailand Game Server 🎮', 
                     flag: 'th', 
-                    currentUsers: 38,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 28,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 38
                 },
                 { 
                     id: 'kr', 
                     name: 'All Korea Server', 
                     flag: 'kr', 
-                    currentUsers: 45,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 78,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 45
                 },
                 { 
                     id: 'in', 
                     name: 'All India Server', 
                     flag: 'in', 
-                    currentUsers: 48,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 95,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 48
                 },
                 { 
                     id: 'hk', 
                     name: 'All Hong Kong Server', 
                     flag: 'hk', 
-                    currentUsers: 40,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 52,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 40
                 },
                 { 
                     id: 'us', 
                     name: 'All US Server', 
                     flag: 'us', 
-                    currentUsers: 49,
+                    currentUsers: 1,
                     maxCapacity: 50, 
                     basePing: 120,
                     status: 'online',
-                    pingHistory: []
+                    pingHistory: [],
+                    targetUsers: 49
                 }
-            ]
+            ],
+            lastUpdateTime: Date.now()
         };
 
         // Initialize server status from localStorage if available
@@ -1943,7 +1964,7 @@
                     // Update user count with color coding
                     const userCountElement = card.querySelector('.server-users span') || card.querySelector('.server-users');
                     if (userCountElement) {
-                        userCountElement.textContent = server.currentUsers;
+                        userCountElement.textContent = Math.round(server.currentUsers);
                         userCountElement.className = '';
                         userCountElement.classList.add(getUserCountColor(server.currentUsers));
                     }
@@ -1977,15 +1998,21 @@
                         statusIndicator.className = 'status-indicator status-online';
                         
                         if (percentage <= 40) {
-                            statusText.textContent = 'Online - Excellent (Green)';
+                            statusText.textContent = 'Online - Excellent';
                         } else if (percentage <= 70) {
-                            statusText.textContent = 'Online - Good (Blue)';
+                            statusText.textContent = 'Online - Good';
                         } else {
-                            statusText.textContent = 'Online - Busy (Yellow)';
+                            statusText.textContent = 'Online - Busy';
                         }
                     }
                     
-                    totalUsers += server.currentUsers;
+                    totalUsers += Math.round(server.currentUsers);
+                    
+                    // Update connected users
+                    const connectedUsersElement = card.querySelector('.connected-users');
+                    if (connectedUsersElement) {
+                        connectedUsersElement.textContent = `Connected Users: ${Math.round(server.currentUsers)}/${server.maxCapacity}`;
+                    }
                     
                     // Update chart
                     if (server.chart) {
@@ -2001,28 +2028,61 @@
                 });
                 
                 document.getElementById('total-users').textContent = totalUsers.toLocaleString();
+                
+                // Update last update time
+                const now = Date.now();
+                const secondsAgo = Math.floor((now - serverData.lastUpdateTime) / 1000);
+                document.getElementById('last-update').textContent = `Last Update: ${secondsAgo} seconds ago`;
             } catch (e) {
                 console.error("UI update error:", e);
             }
         }
 
+        // Animate user count to target value
+        function animateUserCounts() {
+            serverData.servers.forEach(server => {
+                if (Math.abs(server.currentUsers - server.targetUsers) > 0.1) {
+                    // Move current users towards target
+                    const direction = server.currentUsers < server.targetUsers ? 1 : -1;
+                    server.currentUsers += direction * 0.5;
+                } else {
+                    // When close to target, set exactly to target
+                    server.currentUsers = server.targetUsers;
+                }
+            });
+            
+            updateServerStatusUI();
+            
+            // Check if any server still needs animation
+            const needsAnimation = serverData.servers.some(
+                server => Math.abs(server.currentUsers - server.targetUsers) > 0.1
+            );
+            
+            if (needsAnimation) {
+                requestAnimationFrame(animateUserCounts);
+            }
+        }
+
         // Update server status (called every minute)
         function updateServerStatus() {
-            // Generate small random variations in user counts
+            // Update the last update time
+            serverData.lastUpdateTime = Date.now();
+            
+            // Generate small random variations in target user counts
             serverData.servers.forEach(server => {
                 const variation = Math.floor(Math.random() * 11) - 5; // -5 to +5 variation
-                server.currentUsers = Math.max(5, Math.min(server.maxCapacity, server.currentUsers + variation));
+                server.targetUsers = Math.max(5, Math.min(server.maxCapacity, server.targetUsers + variation));
                 
                 // Small variation in ping (but keep it within reasonable bounds)
                 const pingVariation = Math.floor(Math.random() * 11) - 5; // -5 to +5 ms
                 server.basePing = Math.max(10, Math.min(200, server.basePing + pingVariation));
             });
             
+            // Start animating the user counts
+            animateUserCounts();
+            
             // Save to localStorage
             localStorage.setItem('serverStatus', JSON.stringify(serverData.servers));
-            
-            // Update UI
-            updateServerStatusUI();
             
             console.log("Server status updated at " + new Date().toLocaleTimeString());
         }
@@ -2083,6 +2143,9 @@
             initializeServerStatus();
             updateServerTime();
             updateDigitalClock();
+            
+            // Start with animation
+            animateUserCounts();
             
             setInterval(updateServerStatus, 20000); // Update server status every 20 seconds
             setInterval(updatePingValues, 5000); // Update ping every 5 seconds
