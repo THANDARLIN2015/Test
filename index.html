@@ -15,6 +15,7 @@
             --success: #00b894;
             --warning: #fdcb6e;
             --danger: #d63031;
+            --info: #3498db;
             
             /* Light mode colors */
             --bg-color: #f8f9fa;
@@ -446,6 +447,10 @@
             background: var(--warning);
         }
         
+        .status-good {
+            background: var(--info);
+        }
+        
         .server-users {
             font-size: 16px;
             color: #666;
@@ -470,8 +475,8 @@
         }
         
         .ping-good {
-            background-color: rgba(253, 203, 110, 0.2);
-            color: #fdcb6e;
+            background-color: rgba(52, 152, 219, 0.2);
+            color: #3498db;
         }
         
         .ping-poor {
@@ -497,7 +502,19 @@
         .usage-value {
             font-size: 14px;
             font-weight: 600;
-            color: var(--primary);
+            color: var(--text-color);
+        }
+        
+        .usage-value.excellent {
+            color: #00b894;
+        }
+        
+        .usage-value.good {
+            color: #3498db;
+        }
+        
+        .usage-value.busy {
+            color: #fdcb6e;
         }
         
         .usage-bar {
@@ -536,6 +553,11 @@
         /* Active user color coding */
         .user-count-green {
             color: #00b894;
+            font-weight: bold;
+        }
+        
+        .user-count-blue {
+            color: #3498db;
             font-weight: bold;
         }
         
@@ -1079,10 +1101,10 @@
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">70%</span>
+                                <span class="usage-value excellent">40% - Excellent</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 70%"></div>
+                                <div class="usage-progress" style="width: 40%"></div>
                             </div>
                         </div>
                         <div class="server-graph-container">
@@ -1091,216 +1113,208 @@
                     </div>
                 </div>
                 
-                <!-- Singapore Server -->
+                <!-- All Singapore Server -->
                 <div class="server-card" data-server-id="sg">
                     <img src="https://flagcdn.com/w40/sg.png" alt="Singapore Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">Singapore Server</div>
+                        <div class="server-name">All Singapore Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-green">45</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value good">65% - Good</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 65%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="sg-graph"></canvas>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Japan Server -->
+                <!-- All Japan Server -->
                 <div class="server-card" data-server-id="jp">
                     <img src="https://flagcdn.com/w40/jp.png" alt="Japan Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">Japan Server</div>
+                        <div class="server-name">All Japan Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-blue">42</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">62</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value good">55% - Good</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 55%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="jp-graph"></canvas>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Thailand Game Server -->
+                <!-- All Thailand Game Server -->
                 <div class="server-card" data-server-id="th-game">
                     <img src="https://flagcdn.com/w40/th.png" alt="Thailand Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">Thailand Game Server 🎮</div>
+                        <div class="server-name">All Thailand Game Server 🎮</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-green">38</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">28</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value excellent">35% - Excellent</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 35%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="th-game-graph"></canvas>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Thailand Server -->
-                <div class="server-card" data-server-id="th">
+                <!-- All Thailand Server 2 -->
+                <div class="server-card" data-server-id="th2">
                     <img src="https://flagcdn.com/w40/th.png" alt="Thailand Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">Thailand Server</div>
+                        <div class="server-name">All Thailand Server 2</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-green">32</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">32</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value excellent">30% - Excellent</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 30%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
-                            <canvas class="server-graph" id="th-graph"></canvas>
+                            <canvas class="server-graph" id="th2-graph"></canvas>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Korea Server -->
+                <!-- All Korea Server -->
                 <div class="server-card" data-server-id="kr">
                     <img src="https://flagcdn.com/w40/kr.png" alt="Korea Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">Korea Server</div>
+                        <div class="server-name">All Korea Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-blue">45</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-good">78</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value good">60% - Good</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 60%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="kr-graph"></canvas>
                         </div>
                     </div>
                 </div>
                 
-                <!-- India Server -->
+                <!-- All India Server -->
                 <div class="server-card" data-server-id="in">
                     <img src="https://flagcdn.com/w40/in.png" alt="India Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">India Server</div>
+                        <div class="server-name">All India Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-yellow">48</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-poor">95</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value busy">75% - Busy</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 75%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="in-graph"></canvas>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Hong Kong Server -->
+                <!-- All Hong Kong Server -->
                 <div class="server-card" data-server-id="hk">
                     <img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">Hong Kong Server</div>
+                        <div class="server-name">All Hong Kong Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-blue">40</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-excellent">52</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value good">50% - Good</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 50%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="hk-graph"></canvas>
                         </div>
                     </div>
                 </div>
                 
-                <!-- US Server -->
+                <!-- All US Server -->
                 <div class="server-card" data-server-id="us">
                     <img src="https://flagcdn.com/w40/us.png" alt="US Flag" class="server-flag">
                     <div class="server-info">
-                        <div class="server-name">US Server</div>
+                        <div class="server-name">All US Server</div>
                         <div class="server-status">
                             <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent</span>
+                            <span>Online</span>
                         </div>
-                        <div class="server-users"><span class="user-count-green">45</span> active users</div>
+                        <div class="server-users">Active Users: <span class="user-count-yellow">49</span></div>
                         <div class="server-ping">Ping: <span class="ping-value ping-poor">120</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
-                                <span class="usage-value">45%</span>
+                                <span class="usage-value busy">80% - Busy</span>
                             </div>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: 45%"></div>
+                                <div class="usage-progress" style="width: 80%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="us-graph"></canvas>
                         </div>
@@ -1779,7 +1793,7 @@
                 },
                 { 
                     id: 'sg', 
-                    name: 'Singapore Server', 
+                    name: 'All Singapore Server', 
                     flag: 'sg', 
                     currentUsers: 45,
                     maxCapacity: 50, 
@@ -1789,9 +1803,9 @@
                 },
                 { 
                     id: 'jp', 
-                    name: 'Japan Server', 
+                    name: 'All Japan Server', 
                     flag: 'jp', 
-                    currentUsers: 45,
+                    currentUsers: 42,
                     maxCapacity: 50, 
                     basePing: 62,
                     status: 'online',
@@ -1799,19 +1813,19 @@
                 },
                 { 
                     id: 'th-game', 
-                    name: 'Thailand Game Server 🎮', 
+                    name: 'All Thailand Game Server 🎮', 
                     flag: 'th', 
-                    currentUsers: 45,
+                    currentUsers: 38,
                     maxCapacity: 50, 
                     basePing: 28,
                     status: 'online',
                     pingHistory: []
                 },
                 { 
-                    id: 'th', 
-                    name: 'Thailand Server', 
+                    id: 'th2', 
+                    name: 'All Thailand Server 2', 
                     flag: 'th', 
-                    currentUsers: 45,
+                    currentUsers: 32,
                     maxCapacity: 50, 
                     basePing: 32,
                     status: 'online',
@@ -1819,7 +1833,7 @@
                 },
                 { 
                     id: 'kr', 
-                    name: 'Korea Server', 
+                    name: 'All Korea Server', 
                     flag: 'kr', 
                     currentUsers: 45,
                     maxCapacity: 50, 
@@ -1829,9 +1843,9 @@
                 },
                 { 
                     id: 'in', 
-                    name: 'India Server', 
+                    name: 'All India Server', 
                     flag: 'in', 
-                    currentUsers: 45,
+                    currentUsers: 48,
                     maxCapacity: 50, 
                     basePing: 95,
                     status: 'online',
@@ -1839,9 +1853,9 @@
                 },
                 { 
                     id: 'hk', 
-                    name: 'Hong Kong Server', 
+                    name: 'All Hong Kong Server', 
                     flag: 'hk', 
-                    currentUsers: 45,
+                    currentUsers: 40,
                     maxCapacity: 50, 
                     basePing: 52,
                     status: 'online',
@@ -1849,9 +1863,9 @@
                 },
                 { 
                     id: 'us', 
-                    name: 'US Server', 
+                    name: 'All US Server', 
                     flag: 'us', 
-                    currentUsers: 45,
+                    currentUsers: 49,
                     maxCapacity: 50, 
                     basePing: 120,
                     status: 'online',
@@ -1871,7 +1885,7 @@
             initializeServerGraphs();
         }
 
-        // Initialize server graphs with new design
+        // Initialize server graphs with OpenVPN style
         function initializeServerGraphs() {
             serverData.servers.forEach(server => {
                 const ctx = document.getElementById(`${server.id}-graph`).getContext('2d');
@@ -1883,40 +1897,48 @@
                     type: 'line',
                     data: {
                         labels: Array(30).fill(''),
-                        datasets: [{
-                            label: 'Ping (ms)',
-                            data: server.pingHistory,
-                            borderColor: getPingColor(server.basePing),
-                            borderWidth: 2,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.1
-                        }]
+                        datasets: [
+                            {
+                                label: 'Download',
+                                data: Array(30).fill(0).map(() => Math.random() * 80 + 20),
+                                borderColor: '#00b894',
+                                backgroundColor: 'rgba(0, 184, 148, 0.1)',
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'Upload',
+                                data: Array(30).fill(0).map(() => Math.random() * 50 + 10),
+                                borderColor: '#3498db',
+                                backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                fill: true,
+                                tension: 0.4
+                            }
+                        ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
                             y: {
-                                beginAtZero: false,
-                                min: 10,  // Fixed minimum at 10
-                                max: 100, // Fixed maximum at 100
+                                beginAtZero: true,
+                                max: 100,
                                 ticks: {
-                                    stepSize: 10, // Show markers every 10
+                                    stepSize: 20,
                                     callback: function(value) {
-                                        // Only show labels for 10, 20, 30, etc.
-                                        return value % 20 === 0 ? value : '';
+                                        return value + ' Mbps';
                                     }
                                 },
                                 grid: {
-                                    color: function(context) {
-                                        // Make grid lines more visible for 10, 20, 30, etc.
-                                        return context.tick.value % 10 === 0 ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0, 0, 0, 0.05)';
-                                    }
+                                    color: 'rgba(0, 0, 0, 0.05)'
                                 }
                             },
                             x: {
-                                display: false // Hide x-axis labels
+                                display: false
                             }
                         },
                         plugins: {
@@ -1929,7 +1951,7 @@
                         },
                         elements: {
                             line: {
-                                tension: 0.4 // Smoother line
+                                tension: 0.4
                             }
                         }
                     }
@@ -1939,11 +1961,19 @@
             });
         }
 
-        function getPingColor(ping) {
-            if (ping <= 80) return '#00b894'; // excellent - green
-            if (ping <= 90) return '#3498db'; // good - blue
-            if (ping <= 120) return '#fdcb6e'; // busy - yellow
-            return '#d63031'; // poor - red
+        function getServerLoadStatus(percentage) {
+            if (percentage <= 40) {
+                return { class: 'excellent', text: 'Excellent', color: '#00b894' };
+            } else if (percentage <= 70) {
+                return { class: 'good', text: 'Good', color: '#3498db' };
+            } else {
+                return { class: 'busy', text: 'Busy', color: '#fdcb6e' };
+            }
+        }
+
+        function getUserCountColor(count) {
+            if (count <= 40) return 'user-count-green';
+            return 'user-count-blue';
         }
 
         // Update server status UI based on current data
@@ -1957,6 +1987,7 @@
                 
                 // Calculate percentage
                 const percentage = Math.round((server.currentUsers / server.maxCapacity) * 100);
+                const loadStatus = getServerLoadStatus(percentage);
                 
                 // Update user count with color coding
                 const userCountElement = card.querySelector('.server-users span') || card.querySelector('.server-users');
@@ -1964,14 +1995,10 @@
                     userCountElement.textContent = server.currentUsers;
                     
                     // Remove all color classes first
-                    userCountElement.classList.remove('user-count-green', 'user-count-yellow', 'user-count-red');
+                    userCountElement.classList.remove('user-count-green', 'user-count-blue', 'user-count-yellow', 'user-count-red');
                     
-                    // Add appropriate color class based on user count
-                    if (server.currentUsers <= 40) {
-                        userCountElement.classList.add('user-count-green');
-                    } else {
-                        userCountElement.classList.add('user-count-yellow');
-                    }
+                    // Add appropriate color class
+                    userCountElement.classList.add(getUserCountColor(server.currentUsers));
                 }
                 
                 // Update ping with color coding
@@ -1995,18 +2022,14 @@
                 const progressBar = card.querySelector('.usage-progress');
                 if (progressBar) {
                     progressBar.style.width = `${percentage}%`;
+                    progressBar.style.background = loadStatus.color;
                 }
                 
                 // Update percentage text
                 const usageValue = card.querySelector('.usage-value');
                 if (usageValue) {
-                    usageValue.textContent = `${percentage}%`;
-                }
-                
-                // Update limit text
-                const serverLimit = card.querySelector('.server-limit');
-                if (serverLimit) {
-                    serverLimit.textContent = `${server.currentUsers}/${server.maxCapacity} users connected`;
+                    usageValue.textContent = `${percentage}% - ${loadStatus.text}`;
+                    usageValue.className = 'usage-value ' + loadStatus.class;
                 }
                 
                 // Update status
@@ -2014,16 +2037,8 @@
                 const statusText = card.querySelector('.server-status span');
                 
                 if (statusIndicator && statusText) {
-                    if (percentage >= 90) {
-                        statusIndicator.className = 'status-indicator status-busy';
-                        statusText.textContent = 'Online - Busy';
-                    } else if (percentage >= 70) {
-                        statusIndicator.className = 'status-indicator status-online';
-                        statusText.textContent = 'Online - Good';
-                    } else {
-                        statusIndicator.className = 'status-indicator status-online';
-                        statusText.textContent = 'Online - Excellent';
-                    }
+                    statusIndicator.className = 'status-indicator status-online';
+                    statusText.textContent = 'Online - ' + loadStatus.text;
                 }
                 
                 // Update total users
@@ -2031,13 +2046,13 @@
                 
                 // Update chart
                 if (server.chart) {
-                    // Shift and add new ping value
-                    server.pingHistory.shift();
-                    server.pingHistory.push(server.basePing);
+                    // Shift and add new values
+                    server.chart.data.datasets[0].data.shift();
+                    server.chart.data.datasets[0].data.push(Math.random() * 80 + 20);
                     
-                    // Update chart data
-                    server.chart.data.datasets[0].data = server.pingHistory;
-                    server.chart.data.datasets[0].borderColor = getPingColor(server.basePing);
+                    server.chart.data.datasets[1].data.shift();
+                    server.chart.data.datasets[1].data.push(Math.random() * 50 + 10);
+                    
                     server.chart.update();
                 }
             });
@@ -2075,13 +2090,13 @@
                 
                 // Update chart if it exists
                 if (server.chart) {
-                    // Shift and add new ping value
-                    server.pingHistory.shift();
-                    server.pingHistory.push(server.basePing);
+                    // Shift and add new values
+                    server.chart.data.datasets[0].data.shift();
+                    server.chart.data.datasets[0].data.push(Math.random() * 80 + 20);
                     
-                    // Update chart data
-                    server.chart.data.datasets[0].data = server.pingHistory;
-                    server.chart.data.datasets[0].borderColor = getPingColor(server.basePing);
+                    server.chart.data.datasets[1].data.shift();
+                    server.chart.data.datasets[1].data.push(Math.random() * 50 + 10);
+                    
                     server.chart.update();
                 }
             });
