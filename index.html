@@ -1059,12 +1059,38 @@
                 <h3 class="monitor-title">Live Server Status Monitor</h3>
                 <div class="total-users">Total Online: <span id="total-users">5,328</span></div>
             </div>
-            <p class="monitor-subtitle">Updated every minute • Server limit: 100 users per server</p>
+            <p class="monitor-subtitle">Updated every minute • Server limit: 50 users per server</p>
             <div class="server-time">
                 <i class="fas fa-clock"></i>
                 <span id="server-time">Server Time (Thailand): Loading...</span>
             </div>
             <div class="server-grid">
+                <!-- All Thailand Server 1 -->
+                <div class="server-card" data-server-id="th1">
+                    <img src="https://flagcdn.com/w40/th.png" alt="Thailand Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name">All Thailand Server 1</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span>Online</span>
+                        </div>
+                        <div class="server-users">Active Users: <span class="user-count-green">35</span></div>
+                        <div class="server-ping">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label">Server Load</span>
+                                <span class="usage-value">70%</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="th1-graph"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Singapore Server -->
                 <div class="server-card" data-server-id="sg">
                     <img src="https://flagcdn.com/w40/sg.png" alt="Singapore Flag" class="server-flag">
@@ -1085,7 +1111,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="sg-graph"></canvas>
                         </div>
@@ -1112,7 +1138,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="jp-graph"></canvas>
                         </div>
@@ -1139,7 +1165,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="th-game-graph"></canvas>
                         </div>
@@ -1166,7 +1192,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="th-graph"></canvas>
                         </div>
@@ -1193,7 +1219,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="kr-graph"></canvas>
                         </div>
@@ -1220,7 +1246,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="in-graph"></canvas>
                         </div>
@@ -1247,7 +1273,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="hk-graph"></canvas>
                         </div>
@@ -1274,7 +1300,7 @@
                                 <div class="usage-progress" style="width: 45%"></div>
                             </div>
                         </div>
-                        <div class="server-limit">45/100 users connected</div>
+                        <div class="server-limit">45/50 users connected</div>
                         <div class="server-graph-container">
                             <canvas class="server-graph" id="us-graph"></canvas>
                         </div>
@@ -1742,11 +1768,21 @@
         const serverData = {
             servers: [
                 { 
+                    id: 'th1', 
+                    name: 'All Thailand Server 1', 
+                    flag: 'th', 
+                    currentUsers: 35,
+                    maxCapacity: 50, 
+                    basePing: 45,
+                    status: 'online',
+                    pingHistory: []
+                },
+                { 
                     id: 'sg', 
                     name: 'Singapore Server', 
                     flag: 'sg', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 45,
                     status: 'online',
                     pingHistory: []
@@ -1756,7 +1792,7 @@
                     name: 'Japan Server', 
                     flag: 'jp', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 62,
                     status: 'online',
                     pingHistory: []
@@ -1766,7 +1802,7 @@
                     name: 'Thailand Game Server 🎮', 
                     flag: 'th', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 28,
                     status: 'online',
                     pingHistory: []
@@ -1776,7 +1812,7 @@
                     name: 'Thailand Server', 
                     flag: 'th', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 32,
                     status: 'online',
                     pingHistory: []
@@ -1786,7 +1822,7 @@
                     name: 'Korea Server', 
                     flag: 'kr', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 78,
                     status: 'online',
                     pingHistory: []
@@ -1796,7 +1832,7 @@
                     name: 'India Server', 
                     flag: 'in', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 95,
                     status: 'online',
                     pingHistory: []
@@ -1806,7 +1842,7 @@
                     name: 'Hong Kong Server', 
                     flag: 'hk', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 52,
                     status: 'online',
                     pingHistory: []
@@ -1816,7 +1852,7 @@
                     name: 'US Server', 
                     flag: 'us', 
                     currentUsers: 45,
-                    maxCapacity: 100, 
+                    maxCapacity: 50, 
                     basePing: 120,
                     status: 'online',
                     pingHistory: []
@@ -1904,8 +1940,9 @@
         }
 
         function getPingColor(ping) {
-            if (ping < 50) return '#00b894'; // excellent - green
-            if (ping < 100) return '#fdcb6e'; // good - yellow
+            if (ping <= 80) return '#00b894'; // excellent - green
+            if (ping <= 90) return '#3498db'; // good - blue
+            if (ping <= 120) return '#fdcb6e'; // busy - yellow
             return '#d63031'; // poor - red
         }
 
@@ -1922,57 +1959,71 @@
                 const percentage = Math.round((server.currentUsers / server.maxCapacity) * 100);
                 
                 // Update user count with color coding
-                const userCountElement = card.querySelector('.server-users span');
-                userCountElement.textContent = server.currentUsers;
-                
-                // Remove all color classes first
-                userCountElement.classList.remove('user-count-green', 'user-count-yellow', 'user-count-red');
-                
-                // Add appropriate color class based on user count
-                if (server.currentUsers < 40) {
-                    userCountElement.classList.add('user-count-green');
-                } else if (server.currentUsers < 80) {
-                    userCountElement.classList.add('user-count-yellow');
-                } else {
-                    userCountElement.classList.add('user-count-red');
+                const userCountElement = card.querySelector('.server-users span') || card.querySelector('.server-users');
+                if (userCountElement) {
+                    userCountElement.textContent = server.currentUsers;
+                    
+                    // Remove all color classes first
+                    userCountElement.classList.remove('user-count-green', 'user-count-yellow', 'user-count-red');
+                    
+                    // Add appropriate color class based on user count
+                    if (server.currentUsers <= 40) {
+                        userCountElement.classList.add('user-count-green');
+                    } else {
+                        userCountElement.classList.add('user-count-yellow');
+                    }
                 }
                 
                 // Update ping with color coding
                 const pingElement = card.querySelector('.ping-value');
-                pingElement.textContent = server.basePing;
-                pingElement.className = 'ping-value';
-                
-                if (server.basePing < 50) {
-                    pingElement.classList.add('ping-excellent');
-                } else if (server.basePing < 100) {
-                    pingElement.classList.add('ping-good');
-                } else {
-                    pingElement.classList.add('ping-poor');
+                if (pingElement) {
+                    pingElement.textContent = server.basePing;
+                    pingElement.className = 'ping-value';
+                    
+                    if (server.basePing <= 80) {
+                        pingElement.classList.add('ping-excellent');
+                    } else if (server.basePing <= 90) {
+                        pingElement.classList.add('ping-good');
+                    } else if (server.basePing <= 120) {
+                        pingElement.classList.add('ping-poor');
+                    } else {
+                        pingElement.classList.add('ping-poor');
+                    }
                 }
                 
                 // Update progress bar
                 const progressBar = card.querySelector('.usage-progress');
-                progressBar.style.width = `${percentage}%`;
+                if (progressBar) {
+                    progressBar.style.width = `${percentage}%`;
+                }
                 
                 // Update percentage text
-                card.querySelector('.usage-value').textContent = `${percentage}%`;
+                const usageValue = card.querySelector('.usage-value');
+                if (usageValue) {
+                    usageValue.textContent = `${percentage}%`;
+                }
                 
                 // Update limit text
-                card.querySelector('.server-limit').textContent = `${server.currentUsers}/${server.maxCapacity} users connected`;
+                const serverLimit = card.querySelector('.server-limit');
+                if (serverLimit) {
+                    serverLimit.textContent = `${server.currentUsers}/${server.maxCapacity} users connected`;
+                }
                 
                 // Update status
                 const statusIndicator = card.querySelector('.status-indicator');
                 const statusText = card.querySelector('.server-status span');
                 
-                if (percentage >= 90) {
-                    statusIndicator.className = 'status-indicator status-busy';
-                    statusText.textContent = 'Online - Busy';
-                } else if (percentage >= 70) {
-                    statusIndicator.className = 'status-indicator status-online';
-                    statusText.textContent = 'Online - Good';
-                } else {
-                    statusIndicator.className = 'status-indicator status-online';
-                    statusText.textContent = 'Online - Excellent';
+                if (statusIndicator && statusText) {
+                    if (percentage >= 90) {
+                        statusIndicator.className = 'status-indicator status-busy';
+                        statusText.textContent = 'Online - Busy';
+                    } else if (percentage >= 70) {
+                        statusIndicator.className = 'status-indicator status-online';
+                        statusText.textContent = 'Online - Good';
+                    } else {
+                        statusIndicator.className = 'status-indicator status-online';
+                        statusText.textContent = 'Online - Excellent';
+                    }
                 }
                 
                 // Update total users
