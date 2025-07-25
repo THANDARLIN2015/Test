@@ -480,6 +480,11 @@
         }
         
         .ping-poor {
+            background-color: rgba(253, 203, 110, 0.2);
+            color: #fdcb6e;
+        }
+        
+        .ping-bad {
             background-color: rgba(214, 48, 49, 0.2);
             color: #d63031;
         }
@@ -1215,34 +1220,6 @@
                     </div>
                 </div>
                 
-                <!-- All Thailand Server 2 -->
-                <div class="server-card" data-server-id="th2">
-                    <img src="https://flagcdn.com/w40/th.png" alt="Thailand Flag" class="server-flag">
-                    <div class="server-info">
-                        <div class="server-name">All Thailand Server 2</div>
-                        <div class="server-status">
-                            <div class="status-indicator status-online"></div>
-                            <span>Online - Excellent (Green)</span>
-                        </div>
-                        <div class="server-users">Active Users: <span class="user-count-green">32</span></div>
-                        <div class="server-ping">Ping: <span class="ping-value ping-excellent">32</span> ms</div>
-                        <div class="usage-container">
-                            <div class="usage-header">
-                                <span class="usage-label">Server Load</span>
-                                <span class="usage-value excellent">30% - Excellent</span>
-                            </div>
-                            <div class="usage-bar">
-                                <div class="usage-progress" style="width: 30%"></div>
-                            </div>
-                            <div class="connected-users">Connected Users: 32/50</div>
-                        </div>
-                        <div class="server-graph-container">
-                            <canvas class="server-graph" id="th2-graph"></canvas>
-                            <div class="graph-status">alive</div>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- All Korea Server -->
                 <div class="server-card" data-server-id="kr">
                     <img src="https://flagcdn.com/w40/kr.png" alt="Korea Flag" class="server-flag">
@@ -1337,7 +1314,7 @@
                             <span>Online - Busy (Yellow)</span>
                         </div>
                         <div class="server-users">Active Users: <span class="user-count-yellow">49</span></div>
-                        <div class="server-ping">Ping: <span class="ping-value ping-poor">120</span> ms</div>
+                        <div class="server-ping">Ping: <span class="ping-value ping-bad">120</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
                                 <span class="usage-label">Server Load</span>
@@ -1856,16 +1833,6 @@
                     pingHistory: []
                 },
                 { 
-                    id: 'th2', 
-                    name: 'All Thailand Server 2', 
-                    flag: 'th', 
-                    currentUsers: 32,
-                    maxCapacity: 50, 
-                    basePing: 32,
-                    status: 'online',
-                    pingHistory: []
-                },
-                { 
                     id: 'kr', 
                     name: 'All Korea Server', 
                     flag: 'kr', 
@@ -2011,6 +1978,12 @@
             return 'user-count-yellow';
         }
 
+        function getPingStatus(ping) {
+            if (ping <= 80) return { class: 'ping-excellent', color: '#00b894' };
+            if (ping <= 110) return { class: 'ping-poor', color: '#fdcb6e' };
+            return { class: 'ping-bad', color: '#d63031' };
+        }
+
         // Update server status UI based on current data
         function updateServerStatusUI() {
             let totalUsers = 0;
@@ -2023,6 +1996,7 @@
                 // Calculate percentage
                 const percentage = Math.round((server.currentUsers / server.maxCapacity) * 100);
                 const loadStatus = getServerLoadStatus(percentage);
+                const pingStatus = getPingStatus(server.basePing);
                 
                 // Update user count with color coding
                 const userCountElement = card.querySelector('.server-users span') || card.querySelector('.server-users');
@@ -2040,17 +2014,7 @@
                 const pingElement = card.querySelector('.ping-value');
                 if (pingElement) {
                     pingElement.textContent = server.basePing;
-                    pingElement.className = 'ping-value';
-                    
-                    if (server.basePing <= 80) {
-                        pingElement.classList.add('ping-excellent');
-                    } else if (server.basePing <= 90) {
-                        pingElement.classList.add('ping-good');
-                    } else if (server.basePing <= 120) {
-                        pingElement.classList.add('ping-poor');
-                    } else {
-                        pingElement.classList.add('ping-poor');
-                    }
+                    pingElement.className = 'ping-value ' + pingStatus.class;
                 }
                 
                 // Update progress bar
