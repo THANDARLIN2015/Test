@@ -1721,17 +1721,89 @@
             document.querySelector('.payment .order-now-btn').textContent = content.contactMessenger;
         }
 
-        // Server data with consistent user counts across devices
+        // Server data with realistic user counts and status
         const serverData = {
             servers: [
-                { id: 'sg', name: 'Singapore Server', flag: 'sg', current: 45, max: 100, basePing: 45 },
-                { id: 'jp', name: 'Japan Server', flag: 'jp', current: 45, max: 100, basePing: 62 },
-                { id: 'th-game', name: 'Thailand Game Server 🎮', flag: 'th', current: 45, max: 100, basePing: 28 },
-                { id: 'th', name: 'Thailand Server', flag: 'th', current: 45, max: 100, basePing: 32 },
-                { id: 'kr', name: 'Korea Server', flag: 'kr', current: 45, max: 100, basePing: 78 },
-                { id: 'in', name: 'India Server', flag: 'in', current: 45, max: 100, basePing: 95 },
-                { id: 'hk', name: 'Hong Kong Server', flag: 'hk', current: 45, max: 100, basePing: 52 },
-                { id: 'us', name: 'US Server', flag: 'us', current: 45, max: 100, basePing: 120 }
+                { 
+                    id: 'sg', 
+                    name: 'Singapore Server', 
+                    flag: 'sg', 
+                    minUsers: 35, 
+                    maxUsers: 85, 
+                    maxCapacity: 100, 
+                    basePing: 45,
+                    status: 'online'
+                },
+                { 
+                    id: 'jp', 
+                    name: 'Japan Server', 
+                    flag: 'jp', 
+                    minUsers: 30, 
+                    maxUsers: 90, 
+                    maxCapacity: 100, 
+                    basePing: 62,
+                    status: 'online'
+                },
+                { 
+                    id: 'th-game', 
+                    name: 'Thailand Game Server 🎮', 
+                    flag: 'th', 
+                    minUsers: 40, 
+                    maxUsers: 95, 
+                    maxCapacity: 100, 
+                    basePing: 28,
+                    status: 'online'
+                },
+                { 
+                    id: 'th', 
+                    name: 'Thailand Server', 
+                    flag: 'th', 
+                    minUsers: 25, 
+                    maxUsers: 80, 
+                    maxCapacity: 100, 
+                    basePing: 32,
+                    status: 'online'
+                },
+                { 
+                    id: 'kr', 
+                    name: 'Korea Server', 
+                    flag: 'kr', 
+                    minUsers: 20, 
+                    maxUsers: 75, 
+                    maxCapacity: 100, 
+                    basePing: 78,
+                    status: 'online'
+                },
+                { 
+                    id: 'in', 
+                    name: 'India Server', 
+                    flag: 'in', 
+                    minUsers: 15, 
+                    maxUsers: 65, 
+                    maxCapacity: 100, 
+                    basePing: 95,
+                    status: 'online'
+                },
+                { 
+                    id: 'hk', 
+                    name: 'Hong Kong Server', 
+                    flag: 'hk', 
+                    minUsers: 30, 
+                    maxUsers: 85, 
+                    maxCapacity: 100, 
+                    basePing: 52,
+                    status: 'online'
+                },
+                { 
+                    id: 'us', 
+                    name: 'US Server', 
+                    flag: 'us', 
+                    minUsers: 10, 
+                    maxUsers: 60, 
+                    maxCapacity: 100, 
+                    basePing: 120,
+                    status: 'online'
+                }
             ],
             graphData: {}
         };
@@ -1739,15 +1811,15 @@
         // Initialize graph data for each server
         serverData.servers.forEach(server => {
             serverData.graphData[server.id] = [];
-            // Generate initial random data points
+            // Generate initial random data points within the server's range
             for (let i = 0; i < 10; i++) {
                 serverData.graphData[server.id].push(
-                    Math.max(5, Math.min(server.max, server.current + Math.floor(Math.random() * 41) - 20))
+                    Math.floor(Math.random() * (server.maxUsers - server.minUsers + 1)) + server.minUsers
                 );
             }
         });
 
-        // Function to update server status with consistent user counts
+        // Function to update server status with realistic user counts
         function refreshServerStatus() {
             let totalUsers = 0;
             
@@ -1756,11 +1828,14 @@
                 const card = document.querySelector(`.server-card[data-server-id="${server.id}"]`);
                 if (!card) return;
                 
+                // Generate random user count within server's range
+                const currentUsers = Math.floor(Math.random() * (server.maxUsers - server.minUsers + 1)) + server.minUsers;
+                
                 // Calculate percentage
-                const percentage = Math.round((server.current / server.max) * 100);
+                const percentage = Math.round((currentUsers / server.maxCapacity) * 100);
                 
                 // Update user count
-                card.querySelector('.server-users').textContent = `${server.current} active users`;
+                card.querySelector('.server-users').textContent = `${currentUsers} active users`;
                 
                 // Update ping with small random variation
                 const ping = server.basePing + Math.floor(Math.random() * 10) - 5;
@@ -1774,27 +1849,38 @@
                 card.querySelector('.usage-value').textContent = `${percentage}%`;
                 
                 // Update limit text
-                card.querySelector('.server-limit').textContent = `${server.current}/${server.max} users connected`;
+                card.querySelector('.server-limit').textContent = `${currentUsers}/${server.maxCapacity} users connected`;
                 
-                // Update status to always show "Online - Excellent"
-                card.querySelector('.status-indicator').className = 'status-indicator status-online';
-                card.querySelector('.server-status span').textContent = 'Online - Excellent';
+                // Update status
+                const statusIndicator = card.querySelector('.status-indicator');
+                const statusText = card.querySelector('.server-status span');
+                
+                if (percentage >= 90) {
+                    statusIndicator.className = 'status-indicator status-busy';
+                    statusText.textContent = 'Online - Busy';
+                } else if (percentage >= 70) {
+                    statusIndicator.className = 'status-indicator status-online';
+                    statusText.textContent = 'Online - Good';
+                } else {
+                    statusIndicator.className = 'status-indicator status-online';
+                    statusText.textContent = 'Online - Excellent';
+                }
                 
                 // Update total users
-                totalUsers += server.current;
+                totalUsers += currentUsers;
                 
                 // Update graph data
-                updateServerGraph(server.id);
+                updateServerGraph(server.id, currentUsers);
             });
             
-            // Update total users
+            // Update total users with formatting
             document.getElementById('total-users').textContent = totalUsers.toLocaleString();
             
             console.log("Server status refreshed at " + new Date().toLocaleTimeString());
         }
         
         // Function to update server graph
-        function updateServerGraph(serverId) {
+        function updateServerGraph(serverId, currentUsers) {
             const graphContainer = document.getElementById(`${serverId}-graph`);
             if (!graphContainer) return;
             
@@ -1802,9 +1888,15 @@
             const data = serverData.graphData[serverId];
             data.shift();
             const server = serverData.servers.find(s => s.id === serverId);
-            data.push(
-                Math.max(5, Math.min(server.max, server.current + Math.floor(Math.random() * 41) - 20))
-            );
+            
+            // Add new data point with some variation but within server's range
+            const variation = Math.floor(Math.random() * 21) - 10; // -10 to +10 variation
+            let newPoint = currentUsers + variation;
+            
+            // Ensure new point stays within server's min/max range
+            newPoint = Math.max(server.minUsers, Math.min(server.maxUsers, newPoint));
+            
+            data.push(newPoint);
             
             // Clear existing graph
             graphContainer.innerHTML = '<div class="graph-line"></div>';
