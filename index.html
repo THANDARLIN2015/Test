@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JKVPN VIP Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary: #4a00e0;
@@ -520,9 +521,9 @@
             text-align: right;
         }
         
-        /* Empty space where graph was */
-        .server-graph-space {
-            height: 20px;
+        /* Server graph container */
+        .server-graph-container {
+            height: 100px;
             margin-top: 15px;
         }
         
@@ -1063,7 +1064,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="sg-graph"></canvas>
+                        </div>
                     </div>
                 </div>
                 
@@ -1088,7 +1091,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="jp-graph"></canvas>
+                        </div>
                     </div>
                 </div>
                 
@@ -1113,7 +1118,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="th-game-graph"></canvas>
+                        </div>
                     </div>
                 </div>
                 
@@ -1138,7 +1145,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="th-graph"></canvas>
+                        </div>
                     </div>
                 </div>
                 
@@ -1163,7 +1172,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="kr-graph"></canvas>
+                        </div>
                     </div>
                 </div>
                 
@@ -1188,7 +1199,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="in-graph"></canvas>
+                        </div>
                     </div>
                 </div>
                 
@@ -1213,7 +1226,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="hk-graph"></canvas>
+                        </div>
                     </div>
                 </div>
                 
@@ -1238,7 +1253,9 @@
                             </div>
                         </div>
                         <div class="server-limit">45/100 users connected</div>
-                        <div class="server-graph-space"></div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="us-graph"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1709,7 +1726,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 45,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 },
                 { 
                     id: 'jp', 
@@ -1718,7 +1736,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 62,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 },
                 { 
                     id: 'th-game', 
@@ -1727,7 +1746,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 28,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 },
                 { 
                     id: 'th', 
@@ -1736,7 +1756,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 32,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 },
                 { 
                     id: 'kr', 
@@ -1745,7 +1766,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 78,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 },
                 { 
                     id: 'in', 
@@ -1754,7 +1776,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 95,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 },
                 { 
                     id: 'hk', 
@@ -1763,7 +1786,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 52,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 },
                 { 
                     id: 'us', 
@@ -1772,7 +1796,8 @@
                     currentUsers: 45,
                     maxCapacity: 100, 
                     basePing: 120,
-                    status: 'online'
+                    status: 'online',
+                    pingHistory: []
                 }
             ]
         };
@@ -1785,6 +1810,57 @@
                 serverData.servers = parsedStatus;
             }
             updateServerStatusUI();
+            initializeServerGraphs();
+        }
+
+        // Initialize server graphs
+        function initializeServerGraphs() {
+            serverData.servers.forEach(server => {
+                const ctx = document.getElementById(`${server.id}-graph`).getContext('2d');
+                
+                // Initialize with empty data
+                server.pingHistory = Array(30).fill(server.basePing);
+                
+                const chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: Array(30).fill(''),
+                        datasets: [{
+                            label: 'Ping (ms)',
+                            data: server.pingHistory,
+                            borderColor: getPingColor(server.basePing),
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: Math.max(0, server.basePing - 20),
+                                max: server.basePing + 20
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+                
+                server.chart = chart;
+            });
+        }
+
+        function getPingColor(ping) {
+            if (ping < 50) return '#00b894'; // excellent - green
+            if (ping < 100) return '#fdcb6e'; // good - yellow
+            return '#d63031'; // poor - red
         }
 
         // Update server status UI based on current data
@@ -1842,6 +1918,18 @@
                 
                 // Update total users
                 totalUsers += server.currentUsers;
+                
+                // Update chart
+                if (server.chart) {
+                    // Shift and add new ping value
+                    server.pingHistory.shift();
+                    server.pingHistory.push(server.basePing);
+                    
+                    // Update chart data
+                    server.chart.data.datasets[0].data = server.pingHistory;
+                    server.chart.data.datasets[0].borderColor = getPingColor(server.basePing);
+                    server.chart.update();
+                }
             });
             
             // Update total users with formatting
@@ -1867,6 +1955,29 @@
             updateServerStatusUI();
             
             console.log("Server status updated at " + new Date().toLocaleTimeString());
+        }
+        
+        // Update ping every 5 seconds
+        function updatePingValues() {
+            serverData.servers.forEach(server => {
+                const pingVariation = Math.floor(Math.random() * 11) - 5; // -5 to +5 ms
+                server.basePing = Math.max(10, Math.min(200, server.basePing + pingVariation));
+                
+                // Update chart if it exists
+                if (server.chart) {
+                    // Shift and add new ping value
+                    server.pingHistory.shift();
+                    server.pingHistory.push(server.basePing);
+                    
+                    // Update chart data
+                    server.chart.data.datasets[0].data = server.pingHistory;
+                    server.chart.data.datasets[0].borderColor = getPingColor(server.basePing);
+                    server.chart.update();
+                }
+            });
+            
+            // Update UI
+            updateServerStatusUI();
         }
         
         // Update server time (Thailand timezone)
@@ -1913,13 +2024,22 @@
             document.getElementById('digital-date').textContent = dateStr;
         }
         
+        // Auto refresh the page every 30 seconds
+        function setupAutoRefresh() {
+            setTimeout(() => {
+                window.location.reload();
+            }, 30000); // 30 seconds
+        }
+        
         // Initial calls and set intervals
         initializeServerStatus();
         updateServerTime();
         updateDigitalClock();
         setInterval(updateServerStatus, 60000); // Update server status every 1 minute
+        setInterval(updatePingValues, 5000); // Update ping every 5 seconds
         setInterval(updateServerTime, 1000);
         setInterval(updateDigitalClock, 1000);
+        setupAutoRefresh();
         
         // Copy to clipboard function
         function copyToClipboard(text) {
