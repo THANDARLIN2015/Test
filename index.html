@@ -525,6 +525,12 @@
         .server-graph-container {
             height: 100px;
             margin-top: 15px;
+            position: relative;
+        }
+        
+        .server-graph {
+            width: 100%;
+            height: 100%;
         }
         
         /* Active user color coding */
@@ -1829,7 +1835,7 @@
             initializeServerGraphs();
         }
 
-        // Initialize server graphs
+        // Initialize server graphs with new design
         function initializeServerGraphs() {
             serverData.servers.forEach(server => {
                 const ctx = document.getElementById(`${server.id}-graph`).getContext('2d');
@@ -1857,13 +1863,37 @@
                         scales: {
                             y: {
                                 beginAtZero: false,
-                                min: Math.max(0, server.basePing - 20),
-                                max: server.basePing + 20
+                                min: 10,  // Fixed minimum at 10
+                                max: 100, // Fixed maximum at 100
+                                ticks: {
+                                    stepSize: 10, // Show markers every 10
+                                    callback: function(value) {
+                                        // Only show labels for 10, 20, 30, etc.
+                                        return value % 20 === 0 ? value : '';
+                                    }
+                                },
+                                grid: {
+                                    color: function(context) {
+                                        // Make grid lines more visible for 10, 20, 30, etc.
+                                        return context.tick.value % 10 === 0 ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+                                    }
+                                }
+                            },
+                            x: {
+                                display: false // Hide x-axis labels
                             }
                         },
                         plugins: {
                             legend: {
                                 display: false
+                            },
+                            tooltip: {
+                                enabled: false
+                            }
+                        },
+                        elements: {
+                            line: {
+                                tension: 0.4 // Smoother line
                             }
                         }
                     }
@@ -2057,7 +2087,7 @@
         initializeServerStatus();
         updateServerTime();
         updateDigitalClock();
-        setInterval(updateServerStatus, 20000); // Update server status every 20 seconds (changed from 1 minute)
+        setInterval(updateServerStatus, 20000); // Update server status every 20 seconds
         setInterval(updatePingValues, 5000); // Update ping every 5 seconds
         setInterval(updateServerTime, 1000);
         setInterval(updateDigitalClock, 1000);
