@@ -1632,6 +1632,13 @@
         if (currentTheme) {
             body.classList.add(currentTheme);
             updateThemeIcon();
+        } else {
+            // Auto-detect theme based on time (6pm to 6am is dark)
+            const hour = new Date().getHours();
+            if (hour >= 18 || hour < 6) {
+                body.classList.add('dark-mode');
+            }
+            updateThemeIcon();
         }
         
         themeToggle.addEventListener('click', () => {
@@ -1652,7 +1659,8 @@
         const languageBtn = document.getElementById('languageBtn');
         const languageOptions = document.getElementById('languageOptions');
         
-        languageBtn.addEventListener('click', () => {
+        languageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             languageOptions.classList.toggle('show');
         });
         
@@ -1665,7 +1673,8 @@
         
         // Change language
         document.querySelectorAll('.language-option').forEach(option => {
-            option.addEventListener('click', () => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const lang = option.getAttribute('data-lang');
                 const flag = option.querySelector('.language-flag').src;
                 const text = option.textContent.trim();
@@ -1679,6 +1688,10 @@
                 
                 // Close dropdown
                 languageOptions.classList.remove('show');
+                
+                // Here you would add actual language switching logic
+                // For now we'll just show an alert
+                alert(`Language changed to ${text}`);
             });
         });
 
