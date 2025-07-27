@@ -59,6 +59,7 @@
             color: var(--text-color);
             line-height: 1.6;
             position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
         }
         
         .container {
@@ -94,6 +95,7 @@
             padding: 20px 0;
             text-align: center;
             position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .header-content {
@@ -111,6 +113,8 @@
         .logo-img {
             height: 50px;
             width: auto;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .logo {
@@ -256,6 +260,7 @@
             font-size: 42px;
             margin-bottom: 20px;
             color: var(--primary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .hero p {
@@ -415,6 +420,7 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .server-card:hover {
@@ -634,6 +640,8 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
             transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         
         .plan:hover {
@@ -1139,7 +1147,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #00b894;" data-en="Online - Excellent" data-th="ออนไลน์ - ยอดเยี่ยม" data-my="အွန်လိုင်း - အလွန်ကောင်း">Online - Excellent</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-green">35</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-green user-count-value">35</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1167,7 +1175,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">45</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue user-count-value">45</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-excellent">45</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1195,7 +1203,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">42</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue user-count-value">42</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-excellent">62</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1223,7 +1231,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #00b894;" data-en="Online - Excellent" data-th="ออนไลน์ - ยอดเยี่ยม" data-my="အွန်လိုင်း - အလွန်ကောင်း">Online - Excellent</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-green">38</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-green user-count-value">38</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-excellent">28</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1251,7 +1259,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">45</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue user-count-value">45</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-good">78</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1279,7 +1287,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">48</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue user-count-value">48</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-poor">95</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1307,7 +1315,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">40</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue user-count-value">40</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-excellent">52</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1335,7 +1343,7 @@
                             <div class="status-indicator status-online"></div>
                             <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
                         </div>
-                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">49</span></div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue user-count-value">49</span></div>
                         <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-bad">120</span> ms</div>
                         <div class="usage-container">
                             <div class="usage-header">
@@ -1451,7 +1459,7 @@
                 <!-- VIP PLAN 5 -->
                 <div class="plan">
                     <h3 data-en="VIP PLAN 5" data-th="แพ็คเกจ VIP 5" data-my="VIP အစီအစဉ် 5">VIP PLAN 5</h3>
-                    <div class="price">250 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/�">THB/month</span></div>
+                    <div class="price">250 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/လ">THB/month</span></div>
                     <ul class="features">
                         <li data-en="✅ PRICE 250 THB" data-th="✅ ราคา 250 บาท" data-my="✅ ဈေးနှုန်း 250 ဘတ်">✅ PRICE 250 THB</li>
                         <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
@@ -1472,7 +1480,7 @@
                 <!-- VIP PLAN 6 -->
                 <div class="plan">
                     <h3 data-en="VIP PLAN 6" data-th="แพ็คเกจ VIP 6" data-my="VIP အစီအစဉ် 6">VIP PLAN 6</h3>
-                    <div class="price">300 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/�">THB/month</span></div>
+                    <div class="price">300 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/လ">THB/month</span></div>
                     <ul class="features">
                         <li data-en="✅ PRICE 300 THB" data-th="✅ ราคา 300 บาท" data-my="✅ ဈေးနှုန်း 300 ဘတ်">✅ PRICE 300 THB</li>
                         <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
@@ -2036,18 +2044,17 @@
                     const pingStatus = getPingStatus(server.basePing);
                     
                     // Update user count with color coding
-                    const userCountElement = card.querySelector('.server-users span') || card.querySelector('.server-users');
-                    if (userCountElement) {
-                        userCountElement.textContent = Math.round(server.currentUsers);
-                        userCountElement.className = '';
-                        userCountElement.classList.add(getUserCountColor(server.currentUsers));
+                    const userCountValue = card.querySelector('.user-count-value');
+                    if (userCountValue) {
+                        userCountValue.textContent = Math.round(server.currentUsers);
+                        userCountValue.className = 'user-count-value ' + getUserCountColor(server.currentUsers);
                     }
                     
                     // Update ping with color coding
-                    const pingElement = card.querySelector('.ping-value');
-                    if (pingElement) {
-                        pingElement.textContent = server.basePing;
-                        pingElement.className = 'ping-value ' + pingStatus.class;
+                    const pingValue = card.querySelector('.ping-value');
+                    if (pingValue) {
+                        pingValue.textContent = server.basePing;
+                        pingValue.className = 'ping-value ' + pingStatus.class;
                     }
                     
                     // Update progress bar
