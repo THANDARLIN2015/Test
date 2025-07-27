@@ -2010,20 +2010,27 @@
         function getServerLoadStatus(percentage) {
             if (percentage <= 40) {
                 return { class: 'excellent', text: 'Excellent', color: '#00b894' };
-            } else {
+            } else if (percentage <= 70) {
                 return { class: 'good', text: 'Good', color: '#3498db' };
+            } else if (percentage <= 85) {
+                return { class: 'warning', text: 'Warning', color: '#fdcb6e' };
+            } else {
+                return { class: 'danger', text: 'Critical', color: '#d63031' };
             }
         }
 
         function getUserCountColor(count) {
-            if (count <= 43) return 'user-count-green';
-            return 'user-count-blue';
+            if (count <= 40) return 'user-count-green';
+            if (count <= 45) return 'user-count-blue';
+            if (count <= 48) return 'user-count-yellow';
+            return 'user-count-red';
         }
 
         function getPingStatus(ping) {
-            if (ping <= 80) return { class: 'ping-excellent', color: '#00b894' };
-            if (ping <= 110) return { class: 'ping-poor', color: '#fdcb6e' };
-            return { class: 'ping-bad', color: '#d63031' };
+            if (ping <= 50) return { class: 'ping-excellent', text: 'Excellent' };
+            if (ping <= 80) return { class: 'ping-good', text: 'Good' };
+            if (ping <= 110) return { class: 'ping-poor', text: 'Poor' };
+            return { class: 'ping-bad', text: 'Bad' };
         }
 
         // Update server status UI based on current data
@@ -2077,13 +2084,8 @@
                     
                     if (statusIndicator && statusText) {
                         statusIndicator.className = 'status-indicator status-online';
-                        if (server.currentUsers <= 43) {
-                            statusText.textContent = `Online - Excellent`;
-                            statusText.style.color = '#00b894';
-                        } else {
-                            statusText.textContent = `Online - Good`;
-                            statusText.style.color = '#3498db';
-                        }
+                        statusText.textContent = `Online - ${pingStatus.text}`;
+                        statusText.style.color = loadStatus.color;
                     }
                     
                     totalUsers += Math.round(server.currentUsers);
