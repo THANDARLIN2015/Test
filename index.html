@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JKVPN VIP Service - Premium VPN Solutions</title>
+    <title>JKVPN VIP Service</title>
+    
+    <!-- Added Open Graph and Twitter Card meta tags -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png">
+    <meta property="og:title" content="JKVPN VIP Service">
+    <meta property="og:description" content="Premium VPN Service. High-speed, secure, and reliable VPN with unlimited bandwidth">
+    <meta property="og:url" content="http://jkapp.site">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png">
+    
+    <!-- Added favicon for browser tab -->
+    <link rel="icon" href="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png" type="image/png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="icon" href="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png" type="image/png">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "JKVPN VIP Service",
-      "url": "http://jkapp.site",
-      "logo": "https://raw.githubusercontent.com/JHKVPN/VIP/main/image/j.png",
-      "sameAs": [
-        "https://t.me/jk_vipvpn_bot",
-        "https://www.facebook.com/juehtet2025"
-      ]
-    }
-    </script>
     <style>
         :root {
             --primary: #4a00e0;
@@ -61,8 +59,6 @@
             color: var(--text-color);
             line-height: 1.6;
             position: relative;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-            background-attachment: fixed;
         }
         
         .container {
@@ -89,65 +85,46 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             z-index: 1000;
             border: none;
-            transition: transform 0.3s;
-        }
-        
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(15deg);
         }
         
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             padding: 20px 0;
+            text-align: center;
             position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
         
         .logo-container {
             display: flex;
             align-items: center;
             gap: 15px;
-            position: relative;
-            z-index: 10;
         }
         
         .logo-img {
-            height: 65px;
+            height: 50px;
             width: auto;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 2px solid white;
-            transition: transform 0.3s;
-        }
-        
-        .logo-img:hover {
-            transform: scale(1.05) rotate(5deg);
         }
         
         .logo {
             font-size: 32px;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .logo span {
             color: #fdcb6e;
-            font-weight: 800;
         }
         
         /* Language Switcher */
         .language-switcher {
             position: relative;
-            z-index: 10;
         }
         
         .language-btn {
@@ -162,12 +139,10 @@
             gap: 10px;
             font-weight: 600;
             transition: all 0.3s;
-            backdrop-filter: blur(5px);
         }
         
         .language-btn:hover {
             background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
         }
         
         .language-options {
@@ -181,12 +156,6 @@
             z-index: 100;
             display: none;
             min-width: 150px;
-            animation: fadeIn 0.3s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .language-options.show {
@@ -236,23 +205,10 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             transition: all 0.3s;
             position: relative;
-            animation: float 6s ease-in-out infinite;
         }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating-btn:nth-child(1) { animation-delay: 0s; }
-        .floating-btn:nth-child(2) { animation-delay: 1s; }
-        .floating-btn:nth-child(3) { animation-delay: 2s; }
-        .floating-btn:nth-child(4) { animation-delay: 3s; }
         
         .floating-btn:hover {
             transform: translateY(-5px) scale(1.1);
-            animation: none;
         }
         
         .telegram-btn {
@@ -292,128 +248,74 @@
         
         /* Hero */
         .hero {
-            padding: 80px 0 50px;
+            padding: 50px 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v1.png') center/cover no-repeat;
-            opacity: 0.05;
-            z-index: -1;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 42px;
             margin-bottom: 20px;
             color: var(--primary);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            animation: fadeInDown 1s ease;
-        }
-        
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero p {
-            font-size: 1.4rem;
+            font-size: 20px;
             color: #666;
             max-width: 700px;
             margin: 0 auto 40px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         /* Digital Clock */
         .digital-clock {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
-            max-width: 350px;
+            max-width: 300px;
             margin: 0 auto 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            animation: scaleIn 0.8s ease;
-        }
-        
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .time {
-            font-size: 3.5rem;
+            font-size: 36px;
             font-weight: 700;
             text-align: center;
             margin-bottom: 5px;
-            font-family: 'Courier New', monospace;
         }
         
         .date {
-            font-size: 1.4rem;
+            font-size: 18px;
             text-align: center;
             opacity: 0.9;
         }
         
         /* Download APK */
         .download-apk {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 40px;
-            border-radius: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
             margin: 40px auto;
-            max-width: 800px;
+            max-width: 600px;
             color: white;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .download-apk::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            transform: rotate(30deg);
-            z-index: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
         
         .download-apk h3 {
-            font-size: 2.2rem;
+            font-size: 28px;
             margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
         }
         
         .download-apk p {
-            font-size: 1.2rem;
+            font-size: 18px;
             margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
         }
         
         .download-btn-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
-            position: relative;
-            z-index: 1;
+            gap: 20px;
         }
         
         .download-btn {
@@ -422,42 +324,33 @@
             gap: 15px;
             background: white;
             color: var(--primary);
-            padding: 18px 45px;
+            padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 18px;
             margin-top: 20px;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .download-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-            background: #f8f9fa;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
         .download-logo {
-            height: 70px;
+            height: 60px;
             width: auto;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .download-logo:hover {
-            transform: scale(1.05) rotate(5deg);
         }
         
         /* Server Monitor */
         .server-monitor {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
+            padding: 30px;
+            border-radius: 15px;
             margin: 50px auto;
-            max-width: 1200px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 1100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .monitor-header {
@@ -465,38 +358,33 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 20px;
         }
         
         .monitor-title {
             color: var(--primary);
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 32px;
         }
         
         .total-users {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 15px 25px;
+            padding: 10px 20px;
             border-radius: 50px;
             font-weight: 600;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .last-update {
-            font-size: 0.9rem;
+            font-size: 12px;
             opacity: 0.8;
             margin-top: 5px;
         }
         
         .monitor-subtitle {
             color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 16px;
         }
         
         .server-time {
@@ -504,23 +392,17 @@
             align-items: center;
             gap: 10px;
             margin-top: 10px;
-            font-size: 1.1rem;
-            background: var(--section-alt-bg);
-            padding: 10px 20px;
-            border-radius: 50px;
-            width: fit-content;
+            font-size: 16px;
         }
         
         .server-time i {
             color: var(--primary);
-            font-size: 1.3rem;
         }
         
         .server-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
         
         .server-card {
@@ -533,22 +415,19 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .server-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .server-flag {
-            width: 60px;
-            height: 40px;
+            width: 50px;
+            height: 30px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 5px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            border: 1px solid rgba(0,0,0,0.1);
         }
         
         .server-info {
@@ -557,8 +436,8 @@
         
         .server-name {
             font-weight: 700;
-            margin-bottom: 12px;
-            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-size: 20px;
             color: var(--text-color);
         }
         
@@ -566,49 +445,45 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.1rem;
+            font-size: 16px;
             margin-bottom: 15px;
             color: var(--text-color);
         }
         
         .status-indicator {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
         }
         
         .status-online {
             background: var(--success);
-            box-shadow: 0 0 10px var(--success);
         }
         
         .status-offline {
             background: var(--danger);
-            box-shadow: 0 0 10px var(--danger);
         }
         
         .status-good {
             background: var(--info);
-            box-shadow: 0 0 10px var(--info);
         }
         
         .server-users {
-            font-size: 1.1rem;
+            font-size: 16px;
             color: #666;
             margin-bottom: 15px;
         }
         
         .server-ping {
-            font-size: 1.1rem;
+            font-size: 14px;
             color: #666;
             margin-bottom: 10px;
         }
         
         .ping-value {
-            padding: 5px 10px;
-            border-radius: 6px;
+            padding: 2px 6px;
+            border-radius: 4px;
             font-weight: bold;
-            font-size: 1.1rem;
         }
         
         .ping-excellent {
@@ -632,22 +507,22 @@
         }
         
         .usage-container {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .usage-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         
         .usage-label {
-            font-size: 1rem;
+            font-size: 14px;
             color: #666;
         }
         
         .usage-value {
-            font-size: 1rem;
+            font-size: 14px;
             font-weight: 600;
             color: var(--text-color);
         }
@@ -661,30 +536,30 @@
         }
         
         .usage-bar {
-            height: 12px;
+            height: 10px;
             background: #e0e0e0;
-            border-radius: 6px;
+            border-radius: 5px;
             overflow: hidden;
         }
         
         .usage-progress {
             height: 100%;
-            border-radius: 6px;
+            border-radius: 5px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             width: 0%;
             transition: width 1s ease-in-out;
         }
         
         .server-limit {
-            font-size: 0.9rem;
+            font-size: 14px;
             color: #666;
             text-align: right;
         }
         
         /* Server graph container */
         .server-graph-container {
-            height: 120px;
-            margin-top: 20px;
+            height: 100px;
+            margin-top: 15px;
             position: relative;
         }
         
@@ -697,7 +572,7 @@
             position: absolute;
             bottom: 5px;
             right: 5px;
-            font-size: 0.8rem;
+            font-size: 10px;
             color: #00b894;
             font-weight: bold;
         }
@@ -725,79 +600,61 @@
         
         /* Connected Users */
         .connected-users {
-            font-size: 1rem;
+            font-size: 14px;
             color: #666;
-            margin-top: 8px;
+            margin-top: 5px;
         }
         
         /* Pricing */
         .pricing {
-            padding: 80px 0;
+            padding: 60px 0;
             background: var(--section-bg);
         }
         
         .pricing-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .pricing-title h2 {
-            font-size: 3rem;
+            font-size: 40px;
             color: var(--primary);
-            margin-bottom: 15px;
         }
         
         .plans-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
         }
         
         .plan {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
             transition: transform 0.3s;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .plan::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
         }
         
         .plan:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
         }
         
         .plan h3 {
-            font-size: 1.8rem;
+            font-size: 26px;
             margin-bottom: 25px;
             color: var(--primary);
         }
         
         .price {
-            font-size: 2.8rem;
+            font-size: 36px;
             font-weight: 700;
             margin-bottom: 25px;
             color: var(--text-color);
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         .price span {
-            font-size: 1.2rem;
+            font-size: 18px;
             color: #666;
         }
         
@@ -814,205 +671,179 @@
             align-items: center;
             gap: 10px;
             color: var(--text-color);
-            font-size: 1.05rem;
         }
         
         .features li::before {
             content: "✓";
             color: var(--success);
             font-weight: bold;
-            font-size: 1.2rem;
         }
         
         .order-now-btn {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 16px 0;
+            padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 18px;
             transition: all 0.3s;
-            display: block;
+            display: inline-block;
             width: 100%;
             text-align: center;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .order-now-btn:hover {
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             transform: translateY(-3px);
-            background: linear-gradient(to right, #5a1ae6, #9a4aee);
         }
         
         /* Package Codes */
         .package-codes {
             background: var(--section-alt-bg);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 60px auto;
-            max-width: 900px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .package-codes h3 {
             color: var(--primary);
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-size: 28px;
         }
         
         .package-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
         
         .package-item {
             background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
-            text-align: center;
         }
         
         .package-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            background: linear-gradient(135deg, var(--section-alt-bg), var(--card-bg));
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .package-name {
             font-weight: 600;
             color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
         
         .package-code {
             font-family: monospace;
-            font-size: 1.3rem;
+            font-size: 16px;
             color: var(--text-color);
-            margin-bottom: 10px;
-            padding: 12px;
+            margin-bottom: 5px;
+            padding: 8px;
             background: rgba(0,0,0,0.05);
-            border-radius: 8px;
+            border-radius: 5px;
             transition: all 0.3s;
-            font-weight: bold;
-            letter-spacing: 1px;
         }
         
         .package-item:hover .package-code {
             background: rgba(0,0,0,0.1);
-            transform: scale(1.05);
         }
         
         .package-price {
             color: var(--success);
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-top: 10px;
+            font-weight: 600;
         }
         
         /* Payment */
         .payment {
-            padding: 80px 0;
+            padding: 60px 0;
             background: var(--section-alt-bg);
         }
         
         .payment-methods {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 45px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
         }
         
         .method {
             background: var(--card-bg);
-            padding: 35px;
-            border-radius: 20px;
+            padding: 30px;
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
         
         .method-icon {
-            font-size: 3.5rem;
+            font-size: 40px;
             color: var(--primary);
         }
         
         .method-name {
-            font-size: 1.8rem;
+            font-size: 24px;
             font-weight: 600;
             color: var(--text-color);
         }
         
         .qr-code {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             background: #f8f9fa;
             border: 1px solid #ddd;
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 15px;
             margin: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .qr-code img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 8px;
         }
         
         .account-info {
             background: rgba(0,0,0,0.05);
-            padding: 18px 30px;
-            border-radius: 12px;
+            padding: 15px 25px;
+            border-radius: 10px;
             font-family: monospace;
-            font-size: 1.2rem;
+            font-size: 18px;
             margin: 15px 0;
             position: relative;
             width: 100%;
             text-align: center;
             color: var(--text-color);
-            font-weight: 600;
         }
         
         .copy-btn {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             border: none;
-            padding: 14px 30px;
-            border-radius: 10px;
+            padding: 12px 25px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 16px;
             margin-top: 15px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .copy-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         /* Tutorial Video */
         .tutorial {
-            padding: 80px 0;
+            padding: 60px 0;
             background: var(--section-bg);
         }
         
@@ -1021,10 +852,10 @@
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
-            max-width: 900px;
-            margin: 50px auto 0;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            max-width: 800px;
+            margin: 40px auto 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .video-container iframe {
@@ -1034,109 +865,96 @@
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 20px;
         }
         
         /* Gallery */
         .gallery {
-            padding: 80px 0;
+            padding: 60px 0;
             background: var(--section-alt-bg);
         }
         
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 35px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .gallery-item {
             position: relative;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             transition: all 0.3s;
-            height: 500px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
         
         .gallery-img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
             transition: transform 0.5s;
         }
         
-        .gallery-item:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-        }
-        
         .gallery-item:hover .gallery-img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         /* Contact */
         .contact {
-            padding: 80px 0;
+            padding: 60px 0;
             background: var(--section-bg);
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
-            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 40px;
         }
         
         .social-link {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 2rem;
+            font-size: 24px;
             transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         .social-link:hover {
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
         /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--dark), #0d0d1a);
+            background: var(--dark);
             color: white;
-            padding: 60px 0 40px;
+            padding: 40px 0;
             text-align: center;
-        }
-        
-        footer p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .plans-container {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
         }
         
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 25px;
+                gap: 20px;
+            }
+            
+            .plans-container {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
             }
             
             .logo-container {
@@ -1166,7 +984,7 @@
             .monitor-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
+                gap: 15px;
             }
             
             .language-switcher {
@@ -1178,11 +996,11 @@
             }
             
             .digital-clock {
-                max-width: 280px;
+                max-width: 250px;
             }
             
             .time {
-                font-size: 2.5rem;
+                font-size: 32px;
             }
             
             .theme-toggle {
@@ -1195,92 +1013,11 @@
             
             .download-btn-container {
                 flex-direction: column;
-                gap: 25px;
             }
             
             .download-logo {
-                height: 60px;
+                height: 50px;
             }
-            
-            .hero {
-                padding: 60px 0 40px;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.8rem;
-            }
-            
-            .language-btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .digital-clock {
-                padding: 15px;
-            }
-            
-            .time {
-                font-size: 2rem;
-            }
-            
-            .date {
-                font-size: 1rem;
-            }
-            
-            .download-apk {
-                padding: 25px;
-            }
-            
-            .server-monitor {
-                padding: 25px;
-            }
-            
-            .monitor-title {
-                font-size: 1.8rem;
-            }
-            
-            .package-codes {
-                padding: 25px;
-            }
-        }
-        
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #5a1ae6, #9a4aee);
         }
     </style>
 </head>
@@ -1310,7 +1047,7 @@
         </a>
     </div>
 
-    <!-- Header with Fixed Logo -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -1343,7 +1080,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <h1 data-en="Premium VPN Service" data-th="บริการ VPN ระดับพรีเมียม" data-my="အဆင့်မြင့် VPN ဝန်ဆောင်မှု">Premium VPN Service</h1>
@@ -1359,7 +1096,7 @@
         </div>
     </section>
 
-    <!-- Download APK Section -->
+    <!-- Download APK -->
     <section class="container">
         <div class="download-apk">
             <h3 data-en="Download Our Latest App Version" data-th="ดาวน์โหลดแอปเวอร์ชันล่าสุดของเรา" data-my="ကျွန်ုပ်တို့၏နောက်ဆုံးထွက် App ကိုဒေါင်းလုဒ်ရယူပါ">Download Our Latest App Version</h3>
@@ -1476,11 +1213,151 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- All Thailand Game Server -->
+                <div class="server-card" data-server-id="th-game">
+                    <img src="https://flagcdn.com/w40/th.png" alt="Thailand Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name" data-en="All Thailand Game Server 🎮" data-th="เซิร์ฟเวอร์เกมประเทศไทย 🎮" data-my="ထိုင်းနိုင်ငံ Game Server 🎮">All Thailand Game Server 🎮</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span style="color: #00b894;" data-en="Online - Excellent" data-th="ออนไลน์ - ยอดเยี่ยม" data-my="အွန်လိုင်း - အလွန်ကောင်း">Online - Excellent</span>
+                        </div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-green">38</span></div>
+                        <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-excellent">28</span> ms</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label" data-en="Server Load" data-th="โหลดเซิร์ฟเวอร์" data-my="Server ဝန်">Server Load</span>
+                                <span class="usage-value excellent" data-en="35% - Excellent" data-th="35% - ยอดเยี่ยม" data-my="35% - အလွန်ကောင်း">35% - Excellent</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 35%"></div>
+                            </div>
+                            <div class="connected-users" data-en="Connected Users: 38/50" data-th="ผู้ใช้ที่เชื่อมต่อ: 38/50" data-my="ချိတ်ဆက်ထားသောအသုံးပြုသူ - 38/50">Connected Users: 38/50</div>
+                        </div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="th-game-graph"></canvas>
+                            <div class="graph-status">alive</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All Korea Server -->
+                <div class="server-card" data-server-id="kr">
+                    <img src="https://flagcdn.com/w40/kr.png" alt="Korea Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name" data-en="All Korea Server" data-th="เซิร์ฟเวอร์เกาหลี" data-my="ကိုရီးယား Server">All Korea Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
+                        </div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">45</span></div>
+                        <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-good">78</span> ms</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label" data-en="Server Load" data-th="โหลดเซิร์ฟเวอร์" data-my="Server ဝန်">Server Load</span>
+                                <span class="usage-value good" data-en="60% - Good" data-th="60% - ดี" data-my="60% - ကောင်း">60% - Good</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 60%"></div>
+                            </div>
+                            <div class="connected-users" data-en="Connected Users: 45/50" data-th="ผู้ใช้ที่เชื่อมต่อ: 45/50" data-my="ချိတ်ဆက်ထားသောအသုံးပြုသူ - 45/50">Connected Users: 45/50</div>
+                        </div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="kr-graph"></canvas>
+                            <div class="graph-status">alive</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All India Server -->
+                <div class="server-card" data-server-id="in">
+                    <img src="https://flagcdn.com/w40/in.png" alt="India Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name" data-en="All India Server" data-th="เซิร์ฟเวอร์อินเดีย" data-my="အိန္ဒိယ Server">All India Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
+                        </div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">48</span></div>
+                        <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-poor">95</span> ms</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label" data-en="Server Load" data-th="โหลดเซิร์ฟเวอร์" data-my="Server ဝန်">Server Load</span>
+                                <span class="usage-value good" data-en="75% - Good" data-th="75% - ดี" data-my="75% - ကောင်း">75% - Good</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 75%"></div>
+                            </div>
+                            <div class="connected-users" data-en="Connected Users: 48/50" data-th="ผู้ใช้ที่เชื่อมต่อ: 48/50" data-my="ချိတ်ဆက်ထားသောအသုံးပြုသူ - 48/50">Connected Users: 48/50</div>
+                        </div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="in-graph"></canvas>
+                            <div class="graph-status">alive</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All Hong Kong Server -->
+                <div class="server-card" data-server-id="hk">
+                    <img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name" data-en="All Hong Kong Server" data-th="เซิร์ฟเวอร์ฮ่องกง" data-my="ဟောင်ကောင် Server">All Hong Kong Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
+                        </div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">40</span></div>
+                        <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-excellent">52</span> ms</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label" data-en="Server Load" data-th="โหลดเซิร์ฟเวอร์" data-my="Server ဝန်">Server Load</span>
+                                <span class="usage-value good" data-en="50% - Good" data-th="50% - ดี" data-my="50% - ကောင်း">50% - Good</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 50%"></div>
+                            </div>
+                            <div class="connected-users" data-en="Connected Users: 40/50" data-th="ผู้ใช้ที่เชื่อมต่อ: 40/50" data-my="ချိတ်ဆက်ထားသောအသုံးပြုသူ - 40/50">Connected Users: 40/50</div>
+                        </div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="hk-graph"></canvas>
+                            <div class="graph-status">alive</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All US Server -->
+                <div class="server-card" data-server-id="us">
+                    <img src="https://flagcdn.com/w40/us.png" alt="US Flag" class="server-flag">
+                    <div class="server-info">
+                        <div class="server-name" data-en="All US Server" data-th="เซิร์ฟเวอร์สหรัฐอเมริกา" data-my="အမေရိကန် Server">All US Server</div>
+                        <div class="server-status">
+                            <div class="status-indicator status-online"></div>
+                            <span style="color: #3498db;" data-en="Online - Good" data-th="ออนไลน์ - ดี" data-my="အွန်လိုင်း - ကောင်း">Online - Good</span>
+                        </div>
+                        <div class="server-users" data-en="Active Users:" data-th="ผู้ใช้งาน:" data-my="အသုံးပြုနေသူ -">Active Users: <span class="user-count-blue">49</span></div>
+                        <div class="server-ping" data-en="Ping:" data-th="ความเร็วตอบสนอง:" data-my="ပင့် -">Ping: <span class="ping-value ping-bad">120</span> ms</div>
+                        <div class="usage-container">
+                            <div class="usage-header">
+                                <span class="usage-label" data-en="Server Load" data-th="โหลดเซิร์ฟเวอร์" data-my="Server ဝန်">Server Load</span>
+                                <span class="usage-value good" data-en="80% - Good" data-th="80% - ดี" data-my="80% - ကောင်း">80% - Good</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-progress" style="width: 80%"></div>
+                            </div>
+                            <div class="connected-users" data-en="Connected Users: 49/50" data-th="ผู้ใช้ที่เชื่อมต่อ: 49/50" data-my="ချိတ်ဆက်ထားသောအသုံးပြုသူ - 49/50">Connected Users: 49/50</div>
+                        </div>
+                        <div class="server-graph-container">
+                            <canvas class="server-graph" id="us-graph"></canvas>
+                            <div class="graph-status">alive</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing -->
     <section class="pricing">
         <div class="container">
             <div class="pricing-title">
@@ -1528,6 +1405,90 @@
                     </ul>
                     <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
                 </div>
+                
+                <!-- VIP PLAN 3 -->
+                <div class="plan">
+                    <h3 data-en="VIP PLAN 3" data-th="แพ็คเกจ VIP 3" data-my="VIP အစီအစဉ် 3">VIP PLAN 3</h3>
+                    <div class="price">150 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/လ">THB/month</span></div>
+                    <ul class="features">
+                        <li data-en="✅ PRICE 150 THB" data-th="✅ ราคา 150 บาท" data-my="✅ ဈေးနှုန်း 150 ဘတ်">✅ PRICE 150 THB</li>
+                        <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
+                        <li data-en="✅ Unlimited GB" data-th="✅ ใช้ข้อมูลไม่จำกัด" data-my="✅ အကန့်အသတ်မရှိ GB">✅ Unlimited GB</li>
+                        <li data-en="✅ Need Plan" data-th="✅ ต้องมีแพ็คเกจ" data-my="✅ အစီအစဉ်လိုအပ်">✅ Need Plan</li>
+                        <li data-en="✅ Good For All Networks" data-th="✅ ใช้ได้ดีกับทุกเครือข่าย" data-my="✅ ကွန်ရက်အားလုံးအတွက်ကောင်း">✅ Good For All Networks</li>
+                        <li data-en="🎮 Good For Gaming" data-th="🎮 เหมาะสำหรับเล่นเกม" data-my="🎮 ဂိမ်းကစားရန်ကောင်း">🎮 Good For Gaming</li>
+                        <li data-en="💰 Save 50%" data-th="💰 ประหยัด 50%" data-my="💰 ၅၀% သက်သာ">💰 Save 50%</li>
+                        <li data-en="⚡ VIP Support 24/7" data-th="⚡ บริการช่วยเหลือ VIP ตลอด 24 ชั่วโมง" data-my="⚡ VIP အထောက်အပံ့ ၂၄နာရီ">⚡ VIP Support 24/7</li>
+                        <li data-en="🌍 All Server Locations" data-th="🌍 เข้าถึงเซิร์ฟเวอร์ทุกที่" data-my="🌍 Server နေရာအားလုံး">🌍 All Server Locations</li>
+                        <li data-en="🖥️ 2 Dedicated IPs" data-th="🖥️ IP เฉพาะ 2 ที่" data-my="🖥️ အထူး IP ၂ခု">🖥️ 2 Dedicated IPs</li>
+                        <li data-en="🚀 Ultra Speed (1Gbps)" data-th="🚀 ความเร็วสูงสุด (1Gbps)" data-my="🚀 အလွန်မြန်နှုန်း (1Gbps)">🚀 Ultra Speed (1Gbps)</li>
+                        <li data-en="💎 Premium Servers Access" data-th="💎 เข้าถึงเซิร์ฟเวอร์ระดับพรีเมียม" data-my="💎 အဆင့်မြင့် Server များသို့ဝင်ရောက်ခွင့်">💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 4 -->
+                <div class="plan">
+                    <h3 data-en="VIP PLAN 4" data-th="แพ็คเกจ VIP 4" data-my="VIP အစီအစဉ် 4">VIP PLAN 4</h3>
+                    <div class="price">200 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/လ">THB/month</span></div>
+                    <ul class="features">
+                        <li data-en="✅ PRICE 200 THB" data-th="✅ ราคา 200 บาท" data-my="✅ ဈေးနှုန်း 200 ဘတ်">✅ PRICE 200 THB</li>
+                        <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
+                        <li data-en="✅ Unlimited GB" data-th="✅ ใช้ข้อมูลไม่จำกัด" data-my="✅ အကန့်အသတ်မရှိ GB">✅ Unlimited GB</li>
+                        <li data-en="✅ Need Plan" data-th="✅ ต้องมีแพ็คเกจ" data-my="✅ အစီအစဉ်လိုအပ်">✅ Need Plan</li>
+                        <li data-en="✅ Good For All Networks" data-th="✅ ใช้ได้ดีกับทุกเครือข่าย" data-my="✅ ကွန်ရက်အားလုံးအတွက်ကောင်း">✅ Good For All Networks</li>
+                        <li data-en="🎮 Good For Gaming" data-th="🎮 เหมาะสำหรับเล่นเกม" data-my="🎮 ဂိမ်းကစားရန်ကောင်း">🎮 Good For Gaming</li>
+                        <li data-en="💰 Save 50%" data-th="💰 ประหยัด 50%" data-my="💰 ၅၀% သက်သာ">💰 Save 50%</li>
+                        <li data-en="⚡ VIP Support 24/7" data-th="⚡ บริการช่วยเหลือ VIP ตลอด 24 ชั่วโมง" data-my="⚡ VIP အထောက်အပံ့ ၂၄နာရီ">⚡ VIP Support 24/7</li>
+                        <li data-en="🌍 All Server Locations" data-th="🌍 เข้าถึงเซิร์ฟเวอร์ทุกที่" data-my="🌍 Server နေရာအားလုံး">🌍 All Server Locations</li>
+                        <li data-en="🖥️ 2 Dedicated IPs" data-th="🖥️ IP เฉพาะ 2 ที่" data-my="🖥️ အထူး IP ၂ခု">🖥️ 2 Dedicated IPs</li>
+                        <li data-en="🚀 Ultra Speed (1Gbps)" data-th="🚀 ความเร็วสูงสุด (1Gbps)" data-my="🚀 အလွန်မြန်နှုန်း (1Gbps)">🚀 Ultra Speed (1Gbps)</li>
+                        <li data-en="💎 Premium Servers Access" data-th="💎 เข้าถึงเซิร์ฟเวอร์ระดับพรีเมียม" data-my="💎 အဆင့်မြင့် Server များသို့ဝင်ရောက်ခွင့်">💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 5 -->
+                <div class="plan">
+                    <h3 data-en="VIP PLAN 5" data-th="แพ็คเกจ VIP 5" data-my="VIP အစီအစဉ် 5">VIP PLAN 5</h3>
+                    <div class="price">250 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/လ">THB/month</span></div>
+                    <ul class="features">
+                        <li data-en="✅ PRICE 250 THB" data-th="✅ ราคา 250 บาท" data-my="✅ ဈေးနှုန်း 250 ဘတ်">✅ PRICE 250 THB</li>
+                        <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
+                        <li data-en="✅ Unlimited GB" data-th="✅ ใช้ข้อมูลไม่จำกัด" data-my="✅ အကန့်အသတ်မရှိ GB">✅ Unlimited GB</li>
+                        <li data-en="✅ Need Plan" data-th="✅ ต้องมีแพ็คเกจ" data-my="✅ အစီအစဉ်လိုအပ်">✅ Need Plan</li>
+                        <li data-en="✅ Good For All Networks" data-th="✅ ใช้ได้ดีกับทุกเครือข่าย" data-my="✅ ကွန်ရက်အားလုံးအတွက်ကောင်း">✅ Good For All Networks</li>
+                        <li data-en="🎮 Good For Gaming" data-th="🎮 เหมาะสำหรับเล่นเกม" data-my="🎮 ဂိမ်းကစားရန်ကောင်း">🎮 Good For Gaming</li>
+                        <li data-en="💰 Save 50%" data-th="💰 ประหยัด 50%" data-my="💰 ၅၀% သက်သာ">💰 Save 50%</li>
+                        <li data-en="⚡ VIP Support 24/7" data-th="⚡ บริการช่วยเหลือ VIP ตลอด 24 ชั่วโมง" data-my="⚡ VIP အထောက်အပံ့ ၂၄နာရီ">⚡ VIP Support 24/7</li>
+                        <li data-en="🌍 All Server Locations" data-th="🌍 เข้าถึงเซิร์ฟเวอร์ทุกที่" data-my="🌍 Server နေရာအားလုံး">🌍 All Server Locations</li>
+                        <li data-en="🖥️ 2 Dedicated IPs" data-th="🖥️ IP เฉพาะ 2 ที่" data-my="🖥️ အထူး IP ၂ခု">🖥️ 2 Dedicated IPs</li>
+                        <li data-en="🚀 Ultra Speed (1Gbps)" data-th="🚀 ความเร็วสูงสุด (1Gbps)" data-my="🚀 အလွန်မြန်နှုန်း (1Gbps)">🚀 Ultra Speed (1Gbps)</li>
+                        <li data-en="💎 Premium Servers Access" data-th="💎 เข้าถึงเซิร์ฟเวอร์ระดับพรีเมียม" data-my="💎 အဆင့်မြင့် Server များသို့ဝင်ရောက်ခွင့်">💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
+                </div>
+                
+                <!-- VIP PLAN 6 -->
+                <div class="plan">
+                    <h3 data-en="VIP PLAN 6" data-th="แพ็คเกจ VIP 6" data-my="VIP အစီအစဉ် 6">VIP PLAN 6</h3>
+                    <div class="price">300 <span data-en="THB/month" data-th="บาท/เดือน" data-my="ဘတ်/လ">THB/month</span></div>
+                    <ul class="features">
+                        <li data-en="✅ PRICE 300 THB" data-th="✅ ราคา 300 บาท" data-my="✅ ဈေးနှုန်း 300 ဘတ်">✅ PRICE 300 THB</li>
+                        <li data-en="✅ No Ads" data-th="✅ ไม่มีโฆษณา" data-my="✅ ကြော်ငြာမရှိ">✅ No Ads</li>
+                        <li data-en="✅ Unlimited GB" data-th="✅ ใช้ข้อมูลไม่จำกัด" data-my="✅ အကန့်အသတ်မရှိ GB">✅ Unlimited GB</li>
+                        <li data-en="✅ Need Plan" data-th="✅ ต้องมีแพ็คเกจ" data-my="✅ အစီအစဉ်လိုအပ်">✅ Need Plan</li>
+                        <li data-en="✅ Good For All Networks" data-th="✅ ใช้ได้ดีกับทุกเครือข่าย" data-my="✅ ကွန်ရက်အားလုံးအတွက်ကောင်း">✅ Good For All Networks</li>
+                        <li data-en="🎮 Good For Gaming" data-th="🎮 เหมาะสำหรับเล่นเกม" data-my="🎮 ဂိမ်းကစားရန်ကောင်း">🎮 Good For Gaming</li>
+                        <li data-en="💰 Save 50%" data-th="💰 ประหยัด 50%" data-my="💰 ၅၀% သက်သာ">💰 Save 50%</li>
+                        <li data-en="⚡ VIP Support 24/7" data-th="⚡ บริการช่วยเหลือ VIP ตลอด 24 ชั่วโมง" data-my="⚡ VIP အထောက်အပံ့ ၂၄နာရီ">⚡ VIP Support 24/7</li>
+                        <li data-en="🌍 All Server Locations" data-th="🌍 เข้าถึงเซิร์ฟเวอร์ทุกที่" data-my="🌍 Server နေရာအားလုံး">🌍 All Server Locations</li>
+                        <li data-en="🖥️ 2 Dedicated IPs" data-th="🖥️ IP เฉพาะ 2 ที่" data-my="🖥️ အထူး IP ၂ခု">🖥️ 2 Dedicated IPs</li>
+                        <li data-en="🚀 Ultra Speed (1Gbps)" data-th="🚀 ความเร็วสูงสุด (1Gbps)" data-my="🚀 အလွန်မြန်နှုန်း (1Gbps)">🚀 Ultra Speed (1Gbps)</li>
+                        <li data-en="💎 Premium Servers Access" data-th="💎 เข้าถึงเซิร์ฟเวอร์ระดับพรีเมียม" data-my="💎 အဆင့်မြင့် Server များသို့ဝင်ရောက်ခွင့်">💎 Premium Servers Access</li>
+                    </ul>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Order Now" data-th="สั่งซื้อตอนนี้" data-my="ယခုမှာယူပါ">Order Now</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1546,6 +1507,21 @@
                     <div class="package-name" data-en="TRUE Jaidee" data-th="TRUE Jaidee" data-my="TRUE Jaidee">TRUE Jaidee</div>
                     <div class="package-code">*900*8131#</div>
                     <div class="package-price">31.50 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('DTAC APP')">
+                    <div class="package-name" data-en="DTAC Gaming Plan" data-th="แพ็คเกจเกม DTAC" data-my="DTAC Gaming အစီအစဉ်">DTAC Gaming Plan</div>
+                    <div class="package-code">DTAC APP</div>
+                    <div class="package-price">-</div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*3809#')">
+                    <div class="package-name" data-en="True Viber Plan" data-th="แพ็คเกจ Viber True" data-my="True Viber အစီအစဉ်">True Viber Plan</div>
+                    <div class="package-code">*900*3809#</div>
+                    <div class="package-price">53 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
+                </div>
+                <div class="package-item" onclick="copyToClipboard('*900*1347#')">
+                    <div class="package-name" data-en="True VDO Plan" data-th="แพ็คเกจวีดีโอ True" data-my="True VDO အစီအစဉ်">True VDO Plan</div>
+                    <div class="package-code">*900*1347#</div>
+                    <div class="package-price">54 <span data-en="THB" data-th="บาท" data-my="ဘတ်">THB</span></div>
                 </div>
             </div>
         </div>
@@ -1566,7 +1542,7 @@
                     </div>
                     <div class="method-name">Binance</div>
                     <div class="qr-code">
-                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/bnc.png" alt="Binance QR Code">
+                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/bnc.png" alt="Binance QR Code" style="width:100%;height:100%;object-fit:contain;">
                     </div>
                     <div class="account-info">21976442</div>
                     <button class="copy-btn" onclick="copyToClipboard('21976442')">
@@ -1581,13 +1557,26 @@
                     </div>
                     <div class="method-name" data-en="Kasikorn Bank" data-th="ธนาคารกสิกรไทย" data-my="Kasikorn ဘဏ်">Kasikorn Bank</div>
                     <div class="qr-code">
-                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/pp.png" alt="Kasikorn QR Code">
+                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/pp.png" alt="Kasikorn QR Code" style="width:100%;height:100%;object-fit:contain;">
                     </div>
                     <div class="account-info" data-en="Account: 1818206387" data-th="บัญชี: 1818206387" data-my="အကောင့် - 1818206387">Account: 1818206387</div>
                     <div class="account-info" data-en="Name: MR - KHIN NAING LIN" data-th="ชื่อ: MR - KHIN NAING LIN" data-my="အမည် - MR - KHIN NAING LIN">Name: MR - KHIN NAING LIN</div>
                     <button class="copy-btn" onclick="copyToClipboard('1818206387')">
                         <i class="fas fa-copy"></i> <span data-en="Copy Account" data-th="คัดลอกบัญชี" data-my="အကောင့်ကိုကူးယူပါ">Copy Account</span>
                     </button>
+                </div>
+                
+                <!-- Other Methods -->
+                <div class="method">
+                    <div class="method-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="method-name" data-en="Other Methods" data-th="วิธีการอื่นๆ" data-my="အခြားနည်းလမ်းများ">Other Methods</div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p data-en="KBZ Pay, WavePay, AYA Pay, TrueMoney" data-th="KBZ Pay, WavePay, AYA Pay, TrueMoney" data-my="KBZ Pay, WavePay, AYA Pay, TrueMoney">KBZ Pay, WavePay, AYA Pay, TrueMoney</p>
+                        <p data-en="Contact us for other payment options" data-th="ติดต่อเราสำหรับวิธีการชำระเงินอื่นๆ" data-my="အခြားငွေပေးချေမှုနည်းလမ်းများအတွက်ဆက်သွယ်ပါ">Contact us for other payment options</p>
+                    </div>
+                    <a href="https://m.me/juehtet2025" class="order-now-btn" data-en="Contact on Messenger" data-th="ติดต่อผ่าน Messenger" data-my="Messenger မှာဆက်သွယ်ပါ">Contact on Messenger</a>
                 </div>
             </div>
         </div>
@@ -1601,6 +1590,7 @@
                 <p data-en="Watch this tutorial video to get started" data-th="ดูวิดีโอสอนวิธีใช้เพื่อเริ่มต้น" data-my="စတင်ရန်ဤသင်ခန်းစာဗီဒီယိုကိုကြည့်ပါ">Watch this tutorial video to get started</p>
             </div>
             <div class="video-container">
+                <!-- Replace with your actual video embed code -->
                 <iframe src="https://www.youtube.com/embed/O4CYlx89GFE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
@@ -1853,6 +1843,50 @@
                     status: 'online',
                     pingHistory: [],
                     targetUsers: 38
+                },
+                { 
+                    id: 'kr', 
+                    name: 'All Korea Server', 
+                    flag: 'kr', 
+                    currentUsers: 45,
+                    maxCapacity: 50, 
+                    basePing: 78,
+                    status: 'online',
+                    pingHistory: [],
+                    targetUsers: 45
+                },
+                { 
+                    id: 'in', 
+                    name: 'All India Server', 
+                    flag: 'in', 
+                    currentUsers: 48,
+                    maxCapacity: 50, 
+                    basePing: 95,
+                    status: 'online',
+                    pingHistory: [],
+                    targetUsers: 48
+                },
+                { 
+                    id: 'hk', 
+                    name: 'All Hong Kong Server', 
+                    flag: 'hk', 
+                    currentUsers: 40,
+                    maxCapacity: 50, 
+                    basePing: 52,
+                    status: 'online',
+                    pingHistory: [],
+                    targetUsers: 40
+                },
+                { 
+                    id: 'us', 
+                    name: 'All US Server', 
+                    flag: 'us', 
+                    currentUsers: 49,
+                    maxCapacity: 50, 
+                    basePing: 120,
+                    status: 'online',
+                    pingHistory: [],
+                    targetUsers: 49
                 }
             ],
             lastUpdateTime: Date.now()
