@@ -1592,13 +1592,6 @@
         if (currentTheme) {
             body.classList.add(currentTheme);
             updateThemeIcon();
-        } else {
-            // Auto-detect theme based on time (6pm to 6am is dark)
-            const hour = new Date().getHours();
-            if (hour >= 18 || hour < 6) {
-                body.classList.add('dark-mode');
-            }
-            updateThemeIcon();
         }
         
         themeToggle.addEventListener('click', () => {
@@ -1956,7 +1949,7 @@
 
         function getPingStatus(ping) {
             if (ping <= 80) return { class: 'ping-excellent', color: '#00b894' };
-            if (ping <= 130) return { class: 'ping-poor', color: '#fdcb6e' };
+            if (ping <= 120) return { class: 'ping-poor', color: '#fdcb6e' };
             return { class: 'ping-bad', color: '#d63031' };
         }
 
